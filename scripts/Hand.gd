@@ -30,8 +30,9 @@ func reposition_cards():
 		current_angle += card_spread		
 
 func update_card_transform(card: Card, angle_in_drag: float):
-	card.set_position(get_card_position(angle_in_drag))
-	card.set_rotation(deg_to_rad(angle_in_drag + 90))
+	var tween = Globals.create_smooth_tween()
+	tween.tween_property(card, "position", get_card_position(angle_in_drag), 0.15)
+	tween.tween_property(card, "rotation", deg_to_rad(angle_in_drag + 90), 0.15)
 
 func get_card_position(angle_in_deg: float) -> Vector2:
 	var x:float = hand_radius * cos(deg_to_rad(angle_in_deg))

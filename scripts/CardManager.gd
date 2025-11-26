@@ -35,9 +35,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if card_being_dragged:
+		var tween = Globals.create_smooth_tween()
 		var mouse_pos = get_global_mouse_position()
-		card_being_dragged.global_position = Vector2(clamp(mouse_pos.x, 0, screen_size.x, ), clamp(mouse_pos.y, 0, screen_size.y))
-		card_being_dragged.set_rotation(deg_to_rad(0))
+		tween.tween_property(card_being_dragged, "global_position",Vector2(clamp(mouse_pos.x, 0, screen_size.x, ), clamp(mouse_pos.y, 0, screen_size.y)), 0.15 )
+		tween.tween_property(card_being_dragged, "rotation", deg_to_rad(0), 0.15)
 	elif is_instance_of(player_hand_reference, Hand):
 		player_hand_reference.reposition_cards()
 		
@@ -52,11 +53,13 @@ func _input(event):
 				finish_drag()
 
 func start_drag(card):
+	var tween = Globals.create_smooth_tween()
 	card_being_dragged = card
-	card.scale = Vector2(0.8, 0.8)
+	tween.tween_property(card, "scale", Vector2(0.8, 0.8), 0.15) 
 	
 func finish_drag():
-	card_being_dragged.scale = Vector2(1, 1)
+	var tween = Globals.create_smooth_tween()
+	tween.tween_property(card_being_dragged, "scale", Vector2(1, 1), 0.15) 
 	#var card_slot_found = raycast_check_for_card_slot()
 	#if card_slot_found and !card_slot_found.card_in_slot:
 		#player_hand_reference.remove_card_from_hand(card_being_dragged)
@@ -85,13 +88,15 @@ func on_hovered_off_card(card):
 	else:
 		is_hovering_on_card = false
 	
-func highlight_card(card:Card, hovered):
-	if card_being_dragged != card:		
+func highlight_card(card: Card, hovered: bool):
+	if card_being_dragged != card:
+		var tween = Globals.create_smooth_tween()
+
 		if hovered:
-			card.scale = Vector2(1.05, 1.05)
-			card.z_index = 2 
+			tween.tween_property(card, "scale", Vector2(1.2, 1.2), 0.15)
+			card.z_index = 1
 			card.show_details(true)
 		else:
-			card.scale = Vector2(1, 1)
-			card.z_index = 1
+			tween.tween_property(card, "scale", Vector2(1, 1), 0.15)
+			card.z_index = 0
 			card.show_details(false)
