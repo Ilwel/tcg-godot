@@ -8,6 +8,8 @@ class_name Hand extends Node2D
 @onready var collision_shape: CollisionShape2D = $DebugShape
 @onready var card_manager = $CardManager
 
+const HOVER_OFFSET = 30
+
 var hand: Array = []
 
 func add_card(card: Card):
@@ -28,6 +30,16 @@ func reposition_cards():
 	for card in hand:
 		update_card_transform(card, current_angle)
 		current_angle += card_spread		
+
+func reposition_cards_with_highlight(highlight: Card):
+	var card_spread = min(angle_limit / hand.size(), max_card_spread_angle)
+	var current_angle = -(card_spread * (hand.size() - 1))/2 - 90
+	for card in hand:
+		update_card_transform(card, current_angle)
+		current_angle += card_spread
+		if(card == highlight):
+			var tween = Globals.create_smooth_tween()
+			tween.tween_property(highlight, "position:y", highlight.position.y - HOVER_OFFSET, 0.15)	
 
 func update_card_transform(card: Card, angle_in_drag: float):
 	var tween = Globals.create_smooth_tween()

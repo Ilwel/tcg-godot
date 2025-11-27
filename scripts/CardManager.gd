@@ -6,7 +6,9 @@ const COLLISION_MASK_CARD_SLOT = 2
 @onready var screen_size = get_viewport_rect().size
 @onready var card_being_dragged: Card = null
 @onready var is_hovering_on_card = false
+@onready var is_highlighting_a_card = false
 @onready var player_hand_reference = $".."
+@onready var last_hovered_card = null
 
 func get_highest_z(result):
 	var highest_z_card =  result[0].collider.get_parent()
@@ -39,7 +41,7 @@ func _process(delta: float) -> void:
 		var mouse_pos = get_global_mouse_position()
 		tween.tween_property(card_being_dragged, "global_position",Vector2(clamp(mouse_pos.x, 0, screen_size.x, ), clamp(mouse_pos.y, 0, screen_size.y)), 0.15 )
 		tween.tween_property(card_being_dragged, "rotation", deg_to_rad(0), 0.15)
-	elif is_instance_of(player_hand_reference, Hand):
+	elif is_instance_of(player_hand_reference, Hand) and not is_highlighting_a_card:
 		player_hand_reference.reposition_cards()
 		
 func _input(event):
@@ -69,26 +71,46 @@ func finish_drag():
 	#else:
 	#player_hand_reference.add_card_to_hand(card_being_dragged)	
 	card_being_dragged = null
+	is_highlighting_a_card = false
 	
 func connect_card_signals(card):
 	card.connect("hovered", on_hovered_over_card)
 	card.connect("hovered_off", on_hovered_off_card)
+	if not get_window().mouse_exited.is_connected(on_hover_off_window):
+		get_window().mouse_exited.connect(on_hover_off_window)
+	if not get_window().mouse_entered.is_connected(on_hover_on_window):
+		get_window().mouse_entered.connect(on_hover_on_window)
 	
 func on_hovered_over_card(card):
 	if !is_hovering_on_card:
 		is_hovering_on_card = true
 		highlight_card(card, true)
+		last_hovered_card = card
 		
-	
 func on_hovered_off_card(card):
-	highlight_card(card, false)
-	var new_card_hovered = raycast_check_for_card()
-	if(new_card_hovered):
-		highlight_card(new_card_hovered, true)
-	else:
-		is_hovering_on_card = false
+	if card == last_hovered_card:
+		var new_card_hovered = raycast_check_for_card()
+		if card != new_card_hovered:
+			highlight_card(card, false)
+			if new_card_hovered:
+				highlight_card(new_card_hovered, true)
+				last_hovered_card = new_card_hovered
+			else:
+				is_hovering_on_card = false
+				last_hovered_card = null
+
+# window mouse event handlers
+func on_hover_off_window():
+	highlight_card(last_hovered_card, false)
+	last_hovered_card = null
+
+func on_hover_on_window():
+	var resume_hover_card = raycast_check_for_card()
+	if resume_hover_card:
+		highlight_card(resume_hover_card, true)
+		last_hovered_card = resume_hover_card
 	
-func highlight_card(card: Card, hovered: bool):
+func highlight_card(card: Card, hovered: bool) -> void:
 	if card_being_dragged != card:
 		var tween = Globals.create_smooth_tween()
 
@@ -96,7 +118,13 @@ func highlight_card(card: Card, hovered: bool):
 			tween.tween_property(card, "scale", Vector2(1.2, 1.2), 0.15)
 			card.z_index = 1
 			card.show_details(true)
+			if is_instance_of(player_hand_reference, Hand):
+				player_hand_reference.reposition_cards_with_highlight(card)
+				is_highlighting_a_card = true
 		else:
 			tween.tween_property(card, "scale", Vector2(1, 1), 0.15)
 			card.z_index = 0
 			card.show_details(false)
+			if is_instance_of(player_hand_reference, Hand):
+				player_hand_reference.reposition_cards()
+				is_highlighting_a_card = false

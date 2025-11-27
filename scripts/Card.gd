@@ -4,6 +4,8 @@ class_name Card extends Node2D
 signal hovered
 signal hovered_off
 
+const HOVER_OFFSET := 30
+
 @export var cost: int = 0
 @export var card_name: String = "King"
 @export var atk: int = 0
