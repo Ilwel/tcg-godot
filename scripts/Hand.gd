@@ -1,8 +1,8 @@
 @tool
 class_name Hand extends Node2D
 
-@export var hand_radius: int = 100
-@export var angle_limit: float = 25
+@export var hand_radius: int = 1000
+@export var angle_limit: float = 50
 @export var max_card_spread_angle: float = 5
 
 @onready var collision_shape: CollisionShape2D = $DebugShape

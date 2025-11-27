@@ -8,8 +8,7 @@
 script = ExtResource("1_effmb")
 
 [node name="Hand" parent="." instance=ExtResource("1_1mf1e")]
-position = Vector2(480, 1300)
-hand_radius = 800
+position = Vector2(480, 1450)
 
 [node name="Button" type="Button" parent="."]
 offset_right = 8.0
