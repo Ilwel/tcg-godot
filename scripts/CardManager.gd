@@ -31,16 +31,29 @@ func raycast_check_for_card():
 	if result.size() > 0:
 		return get_highest_z(result)
 	return null
+	
+func raycast_check_for_card_slot():
+	var space_state = get_world_2d().direct_space_state
+	var paramters = PhysicsPointQueryParameters2D.new()
+	paramters.position = get_global_mouse_position()
+	paramters.collide_with_areas = true
+	paramters.collision_mask = COLLISION_MASK_CARD_SLOT
+	var result = space_state.intersect_point(paramters)
+	if result.size() > 0:
+		return result[0].collider.get_parent()
+	return null
 
 func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
 	if card_being_dragged:
-		var tween = Globals.create_smooth_tween()
 		var mouse_pos = get_global_mouse_position()
-		tween.tween_property(card_being_dragged, "global_position",Vector2(clamp(mouse_pos.x, 0, screen_size.x, ), clamp(mouse_pos.y, 0, screen_size.y)), 0.15 )
-		tween.tween_property(card_being_dragged, "rotation", deg_to_rad(0), 0.15)
+		card_being_dragged.global_position = Vector2(
+			clamp(mouse_pos.x, 0, screen_size.x),
+			clamp(mouse_pos.y, 0, screen_size.y)
+		)
+		card_being_dragged.rotation = 0
 	elif is_instance_of(player_hand_reference, Hand) and not is_highlighting_a_card:
 		player_hand_reference.reposition_cards()
 		
@@ -54,23 +67,25 @@ func _input(event):
 			if card_being_dragged:
 				finish_drag()
 
-func start_drag(card):
+func start_drag(card: Card):
 	var tween = Globals.create_smooth_tween()
 	card_being_dragged = card
+	card_being_dragged.face.position = card_being_dragged.default_face_pos
 	tween.tween_property(card, "scale", Vector2(0.8, 0.8), 0.15) 
 	
 func finish_drag():
 	var tween = Globals.create_smooth_tween()
 	tween.tween_property(card_being_dragged, "scale", Vector2(1, 1), 0.15) 
-	#var card_slot_found = raycast_check_for_card_slot()
-	#if card_slot_found and !card_slot_found.card_in_slot:
-		#player_hand_reference.remove_card_from_hand(card_being_dragged)
-		#card_being_dragged.position = card_slot_found.position
-		#card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
-		#card_slot_found.card_in_slot = true
-	#else:
-	#player_hand_reference.add_card_to_hand(card_being_dragged)	
+	var card_slot_found = raycast_check_for_card_slot()
+	var card = card_being_dragged
 	card_being_dragged = null
+	if is_instance_of(player_hand_reference, Hand):
+		if card_slot_found and !card_slot_found.card_in_slot:
+			player_hand_reference.remove_card(card)
+			card_slot_found.add_child(card)
+			card.position = Vector2.ZERO
+			card.get_node("CardArea/CardCollision").disabled = true
+			card_slot_found.card_in_slot = true
 	is_highlighting_a_card = false
 	
 func connect_card_signals(card):

@@ -17,12 +17,12 @@ func add_card(card: Card):
 	card_manager.add_child(card)
 	reposition_cards()
 	
-func remove_card(index: int) -> Card:
-	var removing_card = hand[index]
-	hand.remove_at(index)
-	card_manager.remove_child(removing_card)
-	reposition_cards()
-	return removing_card
+func remove_card(card: Card) -> Card:
+	if card in hand:
+		hand.erase(card)
+		card_manager.remove_child(card)
+		reposition_cards()	
+	return card
 
 func reposition_cards():
 	var card_spread = min(angle_limit / hand.size(), max_card_spread_angle)

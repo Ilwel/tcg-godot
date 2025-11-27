@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg3ptgcg5gwir"]
+
+[ext_resource type="PackedScene" uid="uid://bhpc4srugs3jf" path="res://scenes/HandNDeck.tscn" id="1_8jpbd"]
+[ext_resource type="PackedScene" uid="uid://45lkg4x1qc3t" path="res://scenes/CardSlot.tscn" id="2_vjpdw"]
+
+[node name="DuelGameScreen" type="Node2D"]
+
+[node name="HandNDeck" parent="." instance=ExtResource("1_8jpbd")]
+
+[node name="CardSlot" parent="." instance=ExtResource("2_vjpdw")]
+position = Vector2(477, 242)
