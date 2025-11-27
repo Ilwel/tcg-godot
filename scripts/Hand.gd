@@ -28,23 +28,41 @@ func reposition_cards():
 	var card_spread = min(angle_limit / hand.size(), max_card_spread_angle)
 	var current_angle = -(card_spread * (hand.size() - 1))/2 - 90
 	for card in hand:
-		update_card_transform(card, current_angle)
+		update_card_transform(card, current_angle, false)
 		current_angle += card_spread		
 
 func reposition_cards_with_highlight(highlight: Card):
 	var card_spread = min(angle_limit / hand.size(), max_card_spread_angle)
 	var current_angle = -(card_spread * (hand.size() - 1))/2 - 90
 	for card in hand:
-		update_card_transform(card, current_angle)
+		var is_highlighing = card == highlight
+		# só isso, sem tween extra aqui
+		update_card_transform(card, current_angle, is_highlighing)
 		current_angle += card_spread
-		if(card == highlight):
-			var tween = Globals.create_smooth_tween()
-			tween.tween_property(highlight, "position:y", highlight.position.y - HOVER_OFFSET, 0.15)	
-
-func update_card_transform(card: Card, angle_in_drag: float):
+			
+func update_card_transform(card: Card, angle_in_deg: float, is_highlighting: bool):
 	var tween = Globals.create_smooth_tween()
-	tween.tween_property(card, "position", get_card_position(angle_in_drag), 0.15)
-	tween.tween_property(card, "rotation", deg_to_rad(angle_in_drag + 90), 0.15)
+
+	var target_pos = get_card_position(angle_in_deg)
+	var target_rot = deg_to_rad(angle_in_deg + 90)
+
+	# scale
+	var target_scale: Vector2
+	if is_highlighting:
+		target_scale = Vector2(1.2, 1.2)
+	else:
+		target_scale = Vector2.ONE
+
+	# face position
+	var target_face_pos: Vector2 = card.default_face_pos
+	if is_highlighting:
+		target_face_pos.y -= HOVER_OFFSET
+
+	# animate everything at once
+	tween.tween_property(card, "scale", target_scale, 0.05)
+	tween.tween_property(card.face, "position", target_face_pos, 0.15)
+	tween.tween_property(card, "position", target_pos, 0.15)
+	tween.tween_property(card, "rotation", target_rot, 0.15)
 
 func get_card_position(angle_in_deg: float) -> Vector2:
 	var x:float = hand_radius * cos(deg_to_rad(angle_in_deg))

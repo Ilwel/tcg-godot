@@ -111,18 +111,14 @@ func on_hover_on_window():
 		last_hovered_card = resume_hover_card
 	
 func highlight_card(card: Card, hovered: bool) -> void:
-	if card_being_dragged != card:
-		var tween = Globals.create_smooth_tween()
-
+	if !card_being_dragged and card:
 		if hovered:
-			tween.tween_property(card, "scale", Vector2(1.2, 1.2), 0.15)
 			card.z_index = 1
 			card.show_details(true)
 			if is_instance_of(player_hand_reference, Hand):
 				player_hand_reference.reposition_cards_with_highlight(card)
 				is_highlighting_a_card = true
 		else:
-			tween.tween_property(card, "scale", Vector2(1, 1), 0.15)
 			card.z_index = 0
 			card.show_details(false)
 			if is_instance_of(player_hand_reference, Hand):

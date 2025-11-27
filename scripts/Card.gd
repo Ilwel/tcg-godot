@@ -12,14 +12,16 @@ const HOVER_OFFSET := 30
 @export var hp: int = 0
 @export var card_image: Node2D 
 
-@onready var cost_lbl: Label = $CostNode/CostLbl
-@onready var name_lbl: Label = $NameNode/NameLbl
-@onready var atk_lbl: Label = $HBoxContainer/AtkLbl
-@onready var hp_lbl: Label = $HBoxContainer/HpLbl
+@onready var cost_lbl: Label = $FaceCard/CostNode/CostLbl
+@onready var name_lbl: Label = $FaceCard/NameNode/NameLbl
+@onready var atk_lbl: Label = $FaceCard/HBoxContainer/AtkLbl
+@onready var hp_lbl: Label = $FaceCard/HBoxContainer/HpLbl
+@onready var face: Node2D = $FaceCard
+@onready var default_face_pos: Vector2 = face.position
 
 func _ready():
 	get_parent().connect_card_signals(self)
-	cost_lbl.visible = false;
+	#cost_lbl.visible = true;
 	cost_lbl.set_text(str(cost))
 	name_lbl.set_text(card_name)
 	atk_lbl.set_text(str(atk))
@@ -30,9 +32,9 @@ func _process(delta):
 
 func show_details(show: bool):
 	if show:
-		cost_lbl.visible = true
+		pass
 	else:
-		cost_lbl.visible = false	
+		pass
 
 func set_card_values(dict: Dictionary):
 	cost = int(dict["cost"])
