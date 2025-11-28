@@ -9,26 +9,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="GridContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CardSlot" parent="HBoxContainer" instance=ExtResource("1_yqmkh")]
+layout_mode = 2
+
+[node name="Control" type="GridContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
+theme_override_constants/v_separation = 58
 columns = 3
 
-[node name="CardSlot" parent="Control" instance=ExtResource("1_yqmkh")]
+[node name="CardSlot" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
 layout_mode = 2
 
-[node name="CardSlot2" parent="Control" instance=ExtResource("1_yqmkh")]
+[node name="CardSlot2" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
 layout_mode = 2
 
-[node name="CardSlot3" parent="Control" instance=ExtResource("1_yqmkh")]
+[node name="CardSlot3" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
 layout_mode = 2
 
-[node name="CardSlot4" parent="Control" instance=ExtResource("1_yqmkh")]
+[node name="CardSlot4" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
 layout_mode = 2
 
-[node name="CardSlot5" parent="Control" instance=ExtResource("1_yqmkh")]
+[node name="CardSlot5" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
 layout_mode = 2
 
-[node name="CardSlot6" parent="Control" instance=ExtResource("1_yqmkh")]
+[node name="CardSlot6" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="CardSlot2" parent="HBoxContainer/VBoxContainer" instance=ExtResource("1_yqmkh")]
 layout_mode = 2

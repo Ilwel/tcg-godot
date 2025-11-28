@@ -9,7 +9,7 @@
 script = ExtResource("1_1mf1e")
 
 [node name="PlayerDeck" parent="." node_paths=PackedStringArray("player_hand") instance=ExtResource("3_effmb")]
-position = Vector2(109.00003, 244.00003)
+position = Vector2(109.000015, 273)
 player_hand = NodePath("../HandFlat")
 
 [node name="HandFlat" parent="." node_paths=PackedStringArray("card_manager") instance=ExtResource("3_mkpjl")]
