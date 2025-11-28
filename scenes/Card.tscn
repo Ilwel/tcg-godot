@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnd3tr6ouf7b3"]
+[gd_scene load_steps=8 format=3 uid="uid://cnd3tr6ouf7b3"]
 
 [ext_resource type="Texture2D" uid="uid://0xh7olx4p5j1" path="res://assets/card/arts/King.png" id="1_4dx8l"]
 [ext_resource type="Script" uid="uid://dddy5upbtshfv" path="res://scripts/Card.gd" id="1_qf083"]
 [ext_resource type="Texture2D" uid="uid://d2co6ne3n53c" path="res://assets/card/CardCanvasNoBg.png" id="1_tgmmg"]
-[ext_resource type="FontFile" uid="uid://dn8yegybfsirk" path="res://assets/font/04B_03__.TTF" id="2_4dx8l"]
 [ext_resource type="Texture2D" uid="uid://yqasg4kctx4c" path="res://assets/card/CostSprite.png" id="4_40ytf"]
-[ext_resource type="FontFile" uid="uid://qi5taxlmdirj" path="res://assets/font/Tkachevica-4px Regular.ttf" id="6_5273u"]
+[ext_resource type="FontFile" uid="uid://smkfvnem56cw" path="res://assets/font/ark-pixel-10px-monospaced-latin.ttf" id="5_40ytf"]
 
 [sub_resource type="Theme" id="Theme_40ytf"]
 
@@ -14,6 +13,7 @@ size = Vector2(100, 140)
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_qf083")
+cost = 12
 card_name = "Çává"
 atk = 1
 hp = 2
@@ -28,9 +28,7 @@ texture = ExtResource("1_4dx8l")
 [node name="BackgroundSprite" type="Sprite2D" parent="FaceCard/ArtCanvas"]
 texture = ExtResource("1_tgmmg")
 
-[node name="CostNode" type="Control" parent="FaceCard"]
-layout_mode = 3
-anchors_preset = 0
+[node name="CostNode" type="CenterContainer" parent="FaceCard"]
 offset_left = -53.0
 offset_top = -74.0
 offset_right = -38.0
@@ -42,14 +40,11 @@ position = Vector2(7, 7)
 texture = ExtResource("4_40ytf")
 
 [node name="CostLbl" type="Label" parent="FaceCard/CostNode"]
-layout_mode = 0
-offset_left = 3.0
-offset_right = 13.0
-offset_bottom = 16.0
+layout_mode = 2
 theme_override_colors/font_color = Color(0.06666667, 0.06666667, 0.105882354, 1)
-theme_override_fonts/font = ExtResource("2_4dx8l")
-theme_override_font_sizes/font_size = 16
-text = "0"
+theme_override_fonts/font = ExtResource("5_40ytf")
+theme_override_font_sizes/font_size = 10
+text = "12"
 
 [node name="NameNode" type="CenterContainer" parent="FaceCard"]
 offset_left = -47.0
@@ -60,37 +55,37 @@ offset_bottom = -49.0
 [node name="NameLbl" type="Label" parent="FaceCard/NameNode"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8039216, 0.8392157, 0.95686275, 1)
-theme_override_fonts/font = ExtResource("6_5273u")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("5_40ytf")
+theme_override_font_sizes/font_size = 10
 text = "Çává"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="FaceCard"]
 offset_left = 13.0
-offset_top = 38.0
+offset_top = 35.0
 offset_right = 41.0
-offset_bottom = 46.0
+offset_bottom = 48.0
 theme_override_constants/separation = 2
 alignment = 1
 
 [node name="AtkLbl" type="Label" parent="FaceCard/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.06666667, 0.06666667, 0.105882354, 1)
-theme_override_fonts/font = ExtResource("2_4dx8l")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("5_40ytf")
+theme_override_font_sizes/font_size = 10
 text = "1"
 
 [node name="BarLbl" type="Label" parent="FaceCard/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.06666667, 0.06666667, 0.105882354, 1)
-theme_override_fonts/font = ExtResource("2_4dx8l")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("5_40ytf")
+theme_override_font_sizes/font_size = 10
 text = "/"
 
 [node name="HpLbl" type="Label" parent="FaceCard/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.06666667, 0.06666667, 0.105882354, 1)
-theme_override_fonts/font = ExtResource("2_4dx8l")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("5_40ytf")
+theme_override_font_sizes/font_size = 10
 text = "2"
 
 [node name="CardArea" type="Area2D" parent="."]

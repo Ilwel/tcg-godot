@@ -47,7 +47,6 @@ func create_card_from_data(data: Dictionary) -> Card:
 
 	var art_path = data.get("art", "res://assets/card/arts/NoArt.png")
 	card.art.texture = load(art_path)
-
 	return card
 	
 func create_card_from_id(id: String) -> Card:
@@ -64,7 +63,6 @@ func create_card_from_id(id: String) -> Card:
 	card.hp = data["hp"]
 
 	var art_path = data.get("art", "res://assets/card/arts/NoArt.png")
-	print(art_path)
 	var art_node: Sprite2D = card.get_node("FaceCard/ArtCanvas/Art")
 	art_node.texture = load(art_path)
 

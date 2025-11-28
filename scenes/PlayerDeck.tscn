@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dq2fy5rb8eldv" path="res://assets/card/CardBack.png" id="1_6le0c"]
 [ext_resource type="Script" uid="uid://dd3ur453hra2" path="res://scripts/PlayerDeck.gd" id="2_w7a2g"]
 [ext_resource type="Texture2D" uid="uid://1yp6p2x272vt" path="res://assets/card/DeckTickeness.png" id="3_mln2t"]
-[ext_resource type="FontFile" uid="uid://dn8yegybfsirk" path="res://assets/font/04B_03__.TTF" id="4_17ghg"]
+[ext_resource type="FontFile" uid="uid://smkfvnem56cw" path="res://assets/font/ark-pixel-10px-monospaced-latin.ttf" id="4_mln2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7a2g"]
 size = Vector2(108.89444, 148.49243)
@@ -20,16 +20,17 @@ texture = ExtResource("1_6le0c")
 texture = ExtResource("3_mln2t")
 
 [node name="DeckSizeContainer" type="CenterContainer" parent="."]
-offset_left = -31.112698
-offset_top = -4.2426414
-offset_right = 8.887302
-offset_bottom = 35.75736
+offset_left = -33.234016
+offset_top = -6.363965
+offset_right = 6.7659836
+offset_bottom = 33.636036
 rotation = -0.7853982
 
 [node name="DeckSizeLbl" type="Label" parent="DeckSizeContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.09411765, 0.09411765, 0.14509805, 1)
-theme_override_fonts/font = ExtResource("4_17ghg")
+theme_override_fonts/font = ExtResource("4_mln2t")
+theme_override_font_sizes/font_size = 20
 text = "60"
 
 [node name="Area2D" type="Area2D" parent="."]
