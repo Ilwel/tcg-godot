@@ -6,6 +6,7 @@ signal hovered_off
 
 const HOVER_OFFSET := 30
 
+@export var card_id: String = ""
 @export var cost: int = 0
 @export var card_name: String = "King"
 @export var atk: int = 0
@@ -17,6 +18,7 @@ const HOVER_OFFSET := 30
 @onready var atk_lbl: Label = $FaceCard/HBoxContainer/AtkLbl
 @onready var hp_lbl: Label = $FaceCard/HBoxContainer/HpLbl
 @onready var face: Node2D = $FaceCard
+@onready var art: Sprite2D = $FaceCard/ArtCanvas/Art
 @onready var default_face_pos: Vector2 = face.position
 
 func _ready():

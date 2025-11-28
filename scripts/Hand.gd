@@ -8,6 +8,11 @@ class_name Hand extends Node2D
 @onready var collision_shape: CollisionShape2D = $DebugShape
 @onready var card_manager = $CardManager
 
+const SCREEN_WIDTH := 960
+const BASE_Y := 1000              # altura da linha da mão (ajusta no gosto)
+const CARD_SPACING := 110       # distância entre as cartas
+const ROW_Y := 430.0                # altura da mão (ajuste livre)
+
 const HOVER_OFFSET = 30
 
 var hand: Array = []
@@ -64,16 +69,14 @@ func update_card_transform(card: Card, angle_in_deg: float, is_highlighting: boo
 	tween.tween_property(card, "scale", target_scale, 0.05)
 	tween.tween_property(card.face, "position", target_face_pos, 0.15)
 	tween.tween_property(card, "position", target_pos, 0.15)
-	tween.tween_property(card, "rotation", target_rot, 0.15)
+	tween.tween_property(card, "rotation", deg_to_rad(0), 0.15)
 
 func get_card_position(angle_in_deg: float) -> Vector2:
 	var x:float = hand_radius * cos(deg_to_rad(angle_in_deg))
 	var y:float = hand_radius * sin(deg_to_rad(angle_in_deg))
 	
-	return Vector2(x, y)
+	return Globals.pixel_perfect(Vector2(x, y))
 	
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -83,5 +86,3 @@ func _process(delta: float) -> void:
 	
 	if (collision_shape.shape as CircleShape2D).radius != hand_radius:
 		(collision_shape.shape as CircleShape2D).set_radius(hand_radius)
-	
-	pass

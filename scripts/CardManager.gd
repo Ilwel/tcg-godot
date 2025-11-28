@@ -54,8 +54,8 @@ func _process(delta: float) -> void:
 			clamp(mouse_pos.y, 0, screen_size.y)
 		)
 		card_being_dragged.rotation = 0
-	elif is_instance_of(player_hand_reference, Hand) and not is_highlighting_a_card:
-		player_hand_reference.reposition_cards()
+	elif is_instance_of(player_hand_reference, HandFlat) and not is_highlighting_a_card:
+		player_hand_reference.reposition_cards_flat()
 		
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -79,7 +79,7 @@ func finish_drag():
 	var card_slot_found = raycast_check_for_card_slot()
 	var card = card_being_dragged
 	card_being_dragged = null
-	if is_instance_of(player_hand_reference, Hand):
+	if is_instance_of(player_hand_reference, HandFlat):
 		if card_slot_found and !card_slot_found.card_in_slot:
 			player_hand_reference.remove_card(card)
 			card_slot_found.add_child(card)
@@ -130,12 +130,12 @@ func highlight_card(card: Card, hovered: bool) -> void:
 		if hovered:
 			card.z_index = 1
 			card.show_details(true)
-			if is_instance_of(player_hand_reference, Hand):
-				player_hand_reference.reposition_cards_with_highlight(card)
+			if is_instance_of(player_hand_reference, HandFlat):
+				player_hand_reference.reposition_cards_flat_with_highlight(card)
 				is_highlighting_a_card = true
 		else:
 			card.z_index = 0
 			card.show_details(false)
-			if is_instance_of(player_hand_reference, Hand):
-				player_hand_reference.reposition_cards()
+			if is_instance_of(player_hand_reference, HandFlat):
+				player_hand_reference.reposition_cards_flat()
 				is_highlighting_a_card = false
