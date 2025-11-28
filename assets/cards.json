@@ -1,41 +1,41 @@
 [
-  { "id": "guerreiro_1", "nome": "Guerreiro Novato", "custo": 1, "atk": 1, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "guerreiro_2", "nome": "Espadachim Jovem", "custo": 2, "atk": 2, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "guerreiro_3", "nome": "Veterano da Linha", "custo": 3, "atk": 3, "hp": 3, "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "guerreiro_1",  "nome": "Guerreiro Novato",    "custo": 1, "atk": 1, "hp": 4,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "guerreiro_2",  "nome": "Espadachim Jovem",    "custo": 2, "atk": 2, "hp": 6,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "guerreiro_3",  "nome": "Veterano da Linha",   "custo": 3, "atk": 3, "hp": 8,  "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "arqueira_1", "nome": "Arqueira Iniciante", "custo": 1, "atk": 2, "hp": 1, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "arqueira_2", "nome": "Caçadora da Floresta", "custo": 2, "atk": 3, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "arqueira_3", "nome": "Patrulheira Elite", "custo": 3, "atk": 4, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "arqueira_1",   "nome": "Arqueira Iniciante",  "custo": 1, "atk": 2, "hp": 4,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "arqueira_2",   "nome": "Caçadora da Floresta","custo": 2, "atk": 3, "hp": 6,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "arqueira_3",   "nome": "Patrulheira Elite",   "custo": 3, "atk": 4, "hp": 8,  "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "mago_1", "nome": "Mago Aprendiz", "custo": 1, "atk": 1, "hp": 1, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "mago_2", "nome": "Invocador Básico", "custo": 2, "atk": 2, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "mago_3", "nome": "Arcanista", "custo": 3, "atk": 3, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "mago_1",       "nome": "Mago Aprendiz",       "custo": 1, "atk": 1, "hp": 4,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "mago_2",       "nome": "Invocador Básico",    "custo": 2, "atk": 2, "hp": 6,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "mago_3",       "nome": "Arcanista",           "custo": 3, "atk": 3, "hp": 8,  "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "curandeiro_1", "nome": "Acolito Curandeiro", "custo": 1, "atk": 0, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "curandeiro_2", "nome": "Sacerdote da Luz", "custo": 2, "atk": 1, "hp": 3, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "curandeiro_3", "nome": "Alto Clérigo", "custo": 3, "atk": 2, "hp": 4, "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "curandeiro_1", "nome": "Acolito Curandeiro",  "custo": 1, "atk": 0, "hp": 5,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "curandeiro_2", "nome": "Sacerdote da Luz",    "custo": 2, "atk": 1, "hp": 7,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "curandeiro_3", "nome": "Alto Clérigo",        "custo": 3, "atk": 2, "hp": 9,  "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "ladino_1", "nome": "Ladrão de Rua", "custo": 1, "atk": 2, "hp": 1, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "ladino_2", "nome": "Assassino Sombrio", "custo": 2, "atk": 3, "hp": 1, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "ladino_3", "nome": "Mestre das Sombras", "custo": 3, "atk": 4, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "ladino_1",     "nome": "Ladrão de Rua",       "custo": 1, "atk": 2, "hp": 4,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "ladino_2",     "nome": "Assassino Sombrio",   "custo": 2, "atk": 3, "hp": 6,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "ladino_3",     "nome": "Mestre das Sombras",  "custo": 3, "atk": 4, "hp": 8,  "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "elemental_1", "nome": "Elemental de Fogo", "custo": 1, "atk": 2, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "elemental_2", "nome": "Elemental de Gelo", "custo": 2, "atk": 2, "hp": 3, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "elemental_3", "nome": "Elemental Arcano", "custo": 3, "atk": 3, "hp": 3, "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "elemental_1",  "nome": "Elemental de Fogo",   "custo": 1, "atk": 2, "hp": 5,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "elemental_2",  "nome": "Elemental de Gelo",   "custo": 2, "atk": 2, "hp": 7,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "elemental_3",  "nome": "Elemental Arcano",    "custo": 3, "atk": 3, "hp": 9,  "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "orc_1", "nome": "Orc Rasteiro", "custo": 1, "atk": 2, "hp": 1, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "orc_2", "nome": "Orc Brutamonte", "custo": 2, "atk": 3, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "orc_3", "nome": "Orc Guerreiro Alfa", "custo": 3, "atk": 4, "hp": 3, "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "orc_1",        "nome": "Orc Rasteiro",        "custo": 1, "atk": 2, "hp": 5,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "orc_2",        "nome": "Orc Brutamonte",      "custo": 2, "atk": 3, "hp": 7,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "orc_3",        "nome": "Orc Guerreiro Alfa",  "custo": 3, "atk": 4, "hp": 9,  "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "dragao_1", "nome": "King", "custo": 1, "atk": 1, "hp": 3, "art": "res://assets/card/arts/King.png" },
-  { "id": "dragao_2", "nome": "Draco Jovem", "custo": 2, "atk": 3, "hp": 3, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "dragao_3", "nome": "Dragão Ancião", "custo": 3, "atk": 5, "hp": 4, "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "dragao_1",     "nome": "King",                "custo": 1, "atk": 1, "hp": 5,  "art": "res://assets/card/arts/King.png" },
+  { "id": "dragao_2",     "nome": "Draco Jovem",         "custo": 2, "atk": 3, "hp": 7,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "dragao_3",     "nome": "Dragão Ancião",       "custo": 3, "atk": 5, "hp": 10, "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "golem_1", "nome": "Golem de Pedra", "custo": 1, "atk": 1, "hp": 3, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "golem_2", "nome": "Golem de Ferro", "custo": 2, "atk": 2, "hp": 4, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "golem_3", "nome": "Golem Titânico", "custo": 3, "atk": 3, "hp": 5, "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "golem_1",      "nome": "Golem de Pedra",      "custo": 1, "atk": 1, "hp": 6,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "golem_2",      "nome": "Golem de Ferro",      "custo": 2, "atk": 2, "hp": 8,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "golem_3",      "nome": "Golem Titânico",      "custo": 3, "atk": 3, "hp": 10, "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "fera_1", "nome": "Lobo Feroz", "custo": 1, "atk": 2, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "fera_2", "nome": "Urso Selvagem", "custo": 2, "atk": 3, "hp": 3, "art": "res://assets/card/arts/NoArt.png" },
-  { "id": "fera_3", "nome": "Fera Primeva", "custo": 3, "atk": 4, "hp": 4, "art": "res://assets/card/arts/NoArt.png" }
+  { "id": "fera_1",       "nome": "Lobo Feroz",          "custo": 1, "atk": 2, "hp": 5,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "fera_2",       "nome": "Urso Selvagem",       "custo": 2, "atk": 3, "hp": 7,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "fera_3",       "nome": "Fera Primeva",        "custo": 3, "atk": 4, "hp": 9,  "art": "res://assets/card/arts/NoArt.png" }
 ]

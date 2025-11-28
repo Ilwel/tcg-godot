@@ -1,0 +1,41 @@
+[
+  "guerreiro_1", "guerreiro_1", "guerreiro_1",
+  "guerreiro_2", "guerreiro_2",
+  "guerreiro_3",
+
+  "arqueira_1", "arqueira_1",
+  "arqueira_2", "arqueira_2",
+  "arqueira_3",
+
+  "mago_1",
+  "mago_2", "mago_2",
+  "mago_3",
+
+  "curandeiro_1",
+  "curandeiro_2",
+  "curandeiro_3",
+
+  "ladino_1", "ladino_1",
+  "ladino_2",
+  "ladino_3",
+
+  "elemental_1", "elemental_1",
+  "elemental_2",
+  "elemental_3",
+
+  "orc_1",
+  "orc_2", "orc_2",
+  "orc_3",
+
+  "dragao_1",
+  "dragao_2",
+  "dragao_3",
+
+  "golem_1", "golem_1",
+  "golem_2",
+  "golem_3",
+
+  "fera_1", "fera_1",
+  "fera_2",
+  "fera_3"
+]

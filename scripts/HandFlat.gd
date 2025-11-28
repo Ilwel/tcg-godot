@@ -6,9 +6,9 @@ class_name HandFlat extends Node2D
 const SCREEN_WIDTH := 960
 const BASE_Y := 1000              	# altura da linha da mão (ajusta no gosto)
 const CARD_SPACING := 110       	# distância entre as cartas
-const ROW_Y := 430.0                # altura da mão (ajuste livre)
+const ROW_Y := 510.0                # altura da mão (ajuste livre)
 
-const HOVER_OFFSET = 30
+const HOVER_OFFSET = 50
 
 var hand: Array = []
 

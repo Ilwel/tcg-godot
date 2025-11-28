@@ -8,7 +8,7 @@ class_name PlayerDeck extends Node2D
 @onready var deck_size_container = $DeckSizeContainer
 
 func _ready() -> void:
-	import_data(Globals.load_cards_from_json())
+	import_ids(Globals.load_cards_from_json("res://assets/test_deck.json"))
 	randomize()
 	shuffle()
 	$Area2D.input_event.connect(_on_area_input)

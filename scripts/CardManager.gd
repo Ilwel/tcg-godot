@@ -80,9 +80,11 @@ func finish_drag():
 		if card_slot_found and !card_slot_found.card_in_slot:
 			player_hand_reference.remove_card(card)
 			card_slot_found.add_child(card)
-			card.position = Vector2.ZERO
+			card.z_index = -1
+			card.position = Vector2(50, 70)
 			card.get_node("CardArea/CardCollision").disabled = true
 			card_slot_found.card_in_slot = true
+			is_hovering_on_card = false
 	is_highlighting_a_card = false
 	
 func connect_card_signals(card):
