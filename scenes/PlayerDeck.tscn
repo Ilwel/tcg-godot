@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0t8mr6wse0fo"]
+
+[ext_resource type="Texture2D" uid="uid://dfaixwjnt1nps" path="res://assets/card/Deck.png" id="1_6le0c"]
+[ext_resource type="Script" uid="uid://dd3ur453hra2" path="res://scripts/PlayerDeck.gd" id="2_w7a2g"]
+[ext_resource type="FontFile" uid="uid://dn8yegybfsirk" path="res://assets/font/04B_03__.TTF" id="4_17ghg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7a2g"]
+size = Vector2(108.89444, 148.49243)
+
+[node name="PlayerDeck" type="Node2D"]
+rotation = 0.7853982
+script = ExtResource("2_w7a2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6le0c")
+
+[node name="DeckSizeContainer" type="CenterContainer" parent="."]
+offset_left = -30.405594
+offset_top = -3.535532
+offset_right = 9.594406
+offset_bottom = 36.46447
+rotation = -0.7853982
+
+[node name="DeckSizeLbl" type="Label" parent="DeckSizeContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.09411765, 0.09411765, 0.14509805, 1)
+theme_override_fonts/font = ExtResource("4_17ghg")
+text = "60"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_w7a2g")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

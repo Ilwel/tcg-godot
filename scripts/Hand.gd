@@ -12,9 +12,11 @@ const HOVER_OFFSET = 30
 
 var hand: Array = []
 
-func add_card(card: Card):
+func add_card(card: Card, source: Node2D):
 	hand.push_back(card)
 	card_manager.add_child(card)
+	card.global_position = source.global_position
+	card.rotation = source.rotation
 	reposition_cards()
 	
 func remove_card(card: Card) -> Card:

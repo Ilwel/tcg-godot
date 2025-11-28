@@ -12,12 +12,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _on_button_pressed() -> void:
-	var some_card = card.instantiate()
-	hand.add_card(some_card)
 	
-
-
-func _on_button_2_pressed() -> void:
-	hand.remove_card(0);
