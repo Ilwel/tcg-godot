@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhpc4srugs3jf"]
+[gd_scene load_steps=5 format=3 uid="uid://bhpc4srugs3jf"]
 
 [ext_resource type="Script" uid="uid://c7xfwkinp7xdx" path="res://scripts/HandFlat.gd" id="1_1mf1e"]
 [ext_resource type="PackedScene" uid="uid://b0t8mr6wse0fo" path="res://scenes/PlayerDeck.tscn" id="3_effmb"]
 [ext_resource type="PackedScene" uid="uid://bj0qr8gt0y814" path="res://scenes/HandFlat.tscn" id="3_mkpjl"]
+[ext_resource type="PackedScene" uid="uid://dki0mlaal4mvc" path="res://scenes/CardManager.tscn" id="4_mkpjl"]
 
 [node name="HandNDeck" type="Node2D"]
 script = ExtResource("1_1mf1e")
@@ -11,4 +12,8 @@ script = ExtResource("1_1mf1e")
 position = Vector2(109.00003, 244.00003)
 player_hand = NodePath("../HandFlat")
 
-[node name="HandFlat" parent="." instance=ExtResource("3_mkpjl")]
+[node name="HandFlat" parent="." node_paths=PackedStringArray("card_manager") instance=ExtResource("3_mkpjl")]
+card_manager = NodePath("../CardManager")
+
+[node name="CardManager" parent="." node_paths=PackedStringArray("player_hand_reference") instance=ExtResource("4_mkpjl")]
+player_hand_reference = NodePath("../HandFlat")

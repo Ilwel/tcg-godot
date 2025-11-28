@@ -1,4 +1,4 @@
-extends Node2D
+class_name CardManager extends Node2D
 
 const COLLISION_MASK_CARD = 1	
 const COLLISION_MASK_CARD_SLOT = 2
@@ -7,8 +7,9 @@ const COLLISION_MASK_CARD_SLOT = 2
 @onready var card_being_dragged: Card = null
 @onready var is_hovering_on_card = false
 @onready var is_highlighting_a_card = false
-@onready var player_hand_reference = $".."
 @onready var last_hovered_card = null
+
+@export var player_hand_reference:  HandFlat
 
 func get_highest_z(result):
 	var highest_z_card =  result[0].collider.get_parent()
@@ -68,14 +69,10 @@ func _input(event):
 				finish_drag()
 
 func start_drag(card: Card):
-	var tween = Globals.create_smooth_tween()
 	card_being_dragged = card
 	card_being_dragged.face.position = card_being_dragged.default_face_pos
-	tween.tween_property(card, "scale", Vector2(0.8, 0.8), 0.15) 
 	
 func finish_drag():
-	var tween = Globals.create_smooth_tween()
-	tween.tween_property(card_being_dragged, "scale", Vector2(1, 1), 0.15) 
 	var card_slot_found = raycast_check_for_card_slot()
 	var card = card_being_dragged
 	card_being_dragged = null

@@ -1,7 +1,7 @@
 @tool
 class_name HandFlat extends Node2D
 
-@onready var card_manager = $CardManager
+@export var card_manager: CardManager
 
 const SCREEN_WIDTH := 960
 const BASE_Y := 1000              	# altura da linha da mão (ajusta no gosto)

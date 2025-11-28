@@ -27,7 +27,7 @@
   { "id": "orc_2", "nome": "Orc Brutamonte", "custo": 2, "atk": 3, "hp": 2, "art": "res://assets/card/arts/NoArt.png" },
   { "id": "orc_3", "nome": "Orc Guerreiro Alfa", "custo": 3, "atk": 4, "hp": 3, "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "dragao_1", "nome": "Filhote de Dragão", "custo": 1, "atk": 1, "hp": 3, "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "dragao_1", "nome": "King", "custo": 1, "atk": 1, "hp": 3, "art": "res://assets/card/arts/King.png" },
   { "id": "dragao_2", "nome": "Draco Jovem", "custo": 2, "atk": 3, "hp": 3, "art": "res://assets/card/arts/NoArt.png" },
   { "id": "dragao_3", "nome": "Dragão Ancião", "custo": 3, "atk": 5, "hp": 4, "art": "res://assets/card/arts/NoArt.png" },
 

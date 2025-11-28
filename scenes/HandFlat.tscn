@@ -1,9 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj0qr8gt0y814"]
+[gd_scene load_steps=2 format=3 uid="uid://bj0qr8gt0y814"]
 
 [ext_resource type="Script" uid="uid://c7xfwkinp7xdx" path="res://scripts/HandFlat.gd" id="1_pdbjx"]
-[ext_resource type="PackedScene" uid="uid://dki0mlaal4mvc" path="res://scenes/CardManager.tscn" id="2_ufnnf"]
 
-[node name="HandFlat" type="Node2D"]
+[node name="HandFlat" type="Node2D" node_paths=PackedStringArray("card_manager")]
 script = ExtResource("1_pdbjx")
-
-[node name="CardManager" parent="." instance=ExtResource("2_ufnnf")]
+card_manager = NodePath("")
