@@ -49,6 +49,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if card_being_dragged:
+		card_being_dragged.handle_shadow()
 		var mouse_pos = get_global_mouse_position()
 		card_being_dragged.global_position = Vector2(
 			clamp(mouse_pos.x, 0, screen_size.x),
@@ -75,13 +76,14 @@ func start_drag(card: Card):
 func finish_drag():
 	var card_slot_found = raycast_check_for_card_slot()
 	var card = card_being_dragged
+	card.reset_shadow()
 	card_being_dragged = null
 	if is_instance_of(player_hand_reference, HandFlat):
 		if card_slot_found and !card_slot_found.card_in_slot:
 			player_hand_reference.remove_card(card)
 			card.get_node("CardArea/CardCollision").disabled = true
 			card_slot_found.add_child(card)
-			card_slot_found.move_child(card, 0)
+			card_slot_found.move_child(card, 1)
 			card.z_index = -1
 			card.position = Vector2(50, 70)
 			card_slot_found.card_in_slot = true

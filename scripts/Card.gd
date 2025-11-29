@@ -12,6 +12,7 @@ const HOVER_OFFSET := 30
 @export var atk: int = 0
 @export var hp: int = 0
 @export var card_image: Node2D 
+@export var max_offset_shadow: float = 50.0
 
 @onready var cost_lbl: Label = $FaceCard/CostNode/CostLbl
 @onready var name_lbl: Label = $FaceCard/NameNode/NameLbl
@@ -20,6 +21,8 @@ const HOVER_OFFSET := 30
 @onready var face: Node2D = $FaceCard
 @onready var art: Sprite2D = $FaceCard/ArtCanvas/Art
 @onready var default_face_pos: Vector2 = face.position
+@onready var shadow: Sprite2D = $Shadow
+@onready var default_shadow_pos: Vector2 = shadow.position
 
 func _ready():
 	get_parent().connect_card_signals(self)
@@ -53,7 +56,18 @@ func _update_graphics_values():
 	hp_lbl.set_text(str(hp))
 	
 	
+	
+func handle_shadow() -> void:
+	# Y position is enver changed.
+	# Only x changes depending on how far we are from the center of the screen
+	var center: Vector2 = get_viewport_rect().size / 2.0
+	var distance: float = global_position.x - center.x
+	
+	shadow.position.x = lerp(0.0, -sign(distance) * max_offset_shadow, abs(distance/(center.x)))
+	shadow.position.y = 20
 
+func reset_shadow():
+	shadow.position = default_shadow_pos
 
 func _on_card_area_mouse_entered() -> void:
 	emit_signal("hovered", self)

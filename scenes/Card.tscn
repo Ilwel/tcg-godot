@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnd3tr6ouf7b3"]
+[gd_scene load_steps=9 format=3 uid="uid://cnd3tr6ouf7b3"]
 
 [ext_resource type="Texture2D" uid="uid://0xh7olx4p5j1" path="res://assets/card/arts/King.png" id="1_4dx8l"]
 [ext_resource type="Script" uid="uid://dddy5upbtshfv" path="res://scripts/Card.gd" id="1_qf083"]
 [ext_resource type="Texture2D" uid="uid://d2co6ne3n53c" path="res://assets/card/CardCanvasNoBg.png" id="1_tgmmg"]
+[ext_resource type="Texture2D" uid="uid://dio20hxoq2ob4" path="res://assets/card/CardShadow.png" id="2_5273u"]
 [ext_resource type="Texture2D" uid="uid://yqasg4kctx4c" path="res://assets/card/CostSprite.png" id="4_40ytf"]
 [ext_resource type="FontFile" uid="uid://smkfvnem56cw" path="res://assets/font/ark-pixel-10px-monospaced-latin.ttf" id="5_40ytf"]
 
@@ -17,6 +18,11 @@ cost = 12
 card_name = "Çává"
 atk = 1
 hp = 2
+max_offset_shadow = null
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.54509807)
+texture = ExtResource("2_5273u")
 
 [node name="FaceCard" type="Node2D" parent="."]
 

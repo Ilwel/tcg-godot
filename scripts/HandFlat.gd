@@ -36,6 +36,7 @@ func update_card_transform_flat(card: Card, target_pos: Vector2, is_highlighting
 		face_target.y -= HOVER_OFFSET
 
 	tween.tween_property(card.face, "position", face_target, 0.15)
+	card.shadow.position = face_target
 	tween.tween_property(card, "global_position", target_pos, 0.15)
 	tween.tween_property(card, "rotation", 0.0, 0.15)
 	return tween
