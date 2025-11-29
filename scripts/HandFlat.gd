@@ -14,6 +14,7 @@ var hand: Array = []
 
 func add_card(card: Card, source: Node2D):
 	hand.push_back(card)
+	card.get_node("CardArea/CardCollision").disabled = true
 	card_manager.add_child(card)
 	card.global_position = source.global_position
 	card.rotation = source.rotation
@@ -26,7 +27,7 @@ func remove_card(card: Card) -> Card:
 		reposition_cards_flat()	
 	return card
 
-func update_card_transform_flat(card: Card, target_pos: Vector2, is_highlighting: bool) -> void:
+func update_card_transform_flat(card: Card, target_pos: Vector2, is_highlighting: bool) -> Tween:
 	target_pos = Vector2(round(target_pos.x), round(target_pos.y))
 	var tween := Globals.create_smooth_tween()
 
@@ -37,6 +38,10 @@ func update_card_transform_flat(card: Card, target_pos: Vector2, is_highlighting
 	tween.tween_property(card.face, "position", face_target, 0.15)
 	tween.tween_property(card, "global_position", target_pos, 0.15)
 	tween.tween_property(card, "rotation", 0.0, 0.15)
+	return tween
+	
+func after_add_card(card: Card):
+	card.get_node("CardArea/CardCollision").disabled = false
 
 func reposition_cards_flat() -> void:
 	var count := hand.size()
@@ -51,7 +56,8 @@ func reposition_cards_flat() -> void:
 	for i in range(count):
 		var card = hand[i]
 		var target_pos := Vector2(start_x + i * CARD_SPACING, ROW_Y)
-		update_card_transform_flat(card, target_pos, false)
+		var tween = update_card_transform_flat(card, target_pos, false)
+		tween.finished.connect(after_add_card.bind(card))
 
 func reposition_cards_flat_with_highlight(highlight: Card) -> void:
 	var count := hand.size()

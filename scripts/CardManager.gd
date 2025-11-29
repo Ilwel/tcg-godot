@@ -79,10 +79,11 @@ func finish_drag():
 	if is_instance_of(player_hand_reference, HandFlat):
 		if card_slot_found and !card_slot_found.card_in_slot:
 			player_hand_reference.remove_card(card)
+			card.get_node("CardArea/CardCollision").disabled = true
 			card_slot_found.add_child(card)
+			card_slot_found.move_child(card, 0)
 			card.z_index = -1
 			card.position = Vector2(50, 70)
-			card.get_node("CardArea/CardCollision").disabled = true
 			card_slot_found.card_in_slot = true
 			is_hovering_on_card = false
 	is_highlighting_a_card = false
@@ -96,12 +97,14 @@ func connect_card_signals(card):
 		get_window().mouse_entered.connect(on_hover_on_window)
 	
 func on_hovered_over_card(card):
+	print("hover: ", card, is_hovering_on_card)
 	if !is_hovering_on_card:
 		is_hovering_on_card = true
 		highlight_card(card, true)
 		last_hovered_card = card
 		
 func on_hovered_off_card(card):
+	print("leave: ", card)
 	if card == last_hovered_card:
 		var new_card_hovered = raycast_check_for_card()
 		if card != new_card_hovered:

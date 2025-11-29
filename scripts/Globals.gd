@@ -7,7 +7,7 @@ func pixel_perfect(v: Vector2) -> Vector2:
 
 func create_smooth_tween() ->Tween:
 	var tween = get_tree().create_tween()
-	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_trans(Tween.TRANS_BACK)
 	tween.set_ease(Tween.EASE_OUT)
 	return tween
 

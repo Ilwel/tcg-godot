@@ -92,6 +92,7 @@ text = "2"
 
 [node name="CardCollision" type="CollisionShape2D" parent="CardArea"]
 shape = SubResource("RectangleShape2D_qf083")
+debug_color = Color(0.67087185, 0.5020447, 0.24203756, 0.41960785)
 
 [connection signal="mouse_entered" from="CardArea" to="." method="_on_card_area_mouse_entered"]
 [connection signal="mouse_exited" from="CardArea" to="." method="_on_card_area_mouse_exited"]
