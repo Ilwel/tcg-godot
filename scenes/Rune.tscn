@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci10ce30hduqg"]
+
+[ext_resource type="Texture2D" uid="uid://bveaxg7di016q" path="res://assets/runes/FireRune.png" id="1_x1jr1"]
+[ext_resource type="Script" uid="uid://c55515d7qsxac" path="res://scripts/Rune.gd" id="1_yrrjd"]
+
+[node name="Rune" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_yrrjd")
+
+[node name="RuneSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_x1jr1")
+offset = Vector2(16, 16)

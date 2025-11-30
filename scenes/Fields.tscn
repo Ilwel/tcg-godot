@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dldvyaaoybfb7"]
+[gd_scene load_steps=3 format=3 uid="uid://dldvyaaoybfb7"]
 
+[ext_resource type="PackedScene" uid="uid://ci10ce30hduqg" path="res://scenes/Rune.tscn" id="1_is5d7"]
 [ext_resource type="PackedScene" uid="uid://45lkg4x1qc3t" path="res://scenes/CardSlot.tscn" id="1_yqmkh"]
 
 [node name="Fields" type="CenterContainer"]
@@ -12,6 +13,24 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 20
+
+[node name="HBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Rune" parent="HBoxContainer/HBoxContainer3" instance=ExtResource("1_is5d7")]
+layout_mode = 2
+rune_type = 4
+enabled = true
+
+[node name="Rune2" parent="HBoxContainer/HBoxContainer3" instance=ExtResource("1_is5d7")]
+layout_mode = 2
+rune_type = 1
+enabled = null
+
+[node name="Rune3" parent="HBoxContainer/HBoxContainer3" instance=ExtResource("1_is5d7")]
+layout_mode = 2
+rune_type = 3
+enabled = null
 
 [node name="CardSlot" parent="HBoxContainer" instance=ExtResource("1_yqmkh")]
 layout_mode = 2
@@ -46,3 +65,19 @@ alignment = 2
 
 [node name="CardSlot2" parent="HBoxContainer/VBoxContainer" instance=ExtResource("1_yqmkh")]
 layout_mode = 2
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Rune" parent="HBoxContainer/HBoxContainer2" instance=ExtResource("1_is5d7")]
+layout_mode = 2
+enabled = null
+
+[node name="Rune2" parent="HBoxContainer/HBoxContainer2" instance=ExtResource("1_is5d7")]
+layout_mode = 2
+enabled = null
+
+[node name="Rune3" parent="HBoxContainer/HBoxContainer2" instance=ExtResource("1_is5d7")]
+layout_mode = 2
+enabled = true
