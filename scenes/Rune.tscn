@@ -1,7 +1,84 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci10ce30hduqg"]
+[gd_scene load_steps=15 format=3 uid="uid://ci10ce30hduqg"]
 
-[ext_resource type="Texture2D" uid="uid://bveaxg7di016q" path="res://assets/runes/FireRune.png" id="1_x1jr1"]
 [ext_resource type="Script" uid="uid://c55515d7qsxac" path="res://scripts/Rune.gd" id="1_yrrjd"]
+[ext_resource type="Texture2D" uid="uid://rt0088ms03db" path="res://assets/gem/gem1.png" id="2_yrrjd"]
+[ext_resource type="Texture2D" uid="uid://bvvj10aim5goa" path="res://assets/gem/bright.png" id="3_o43bi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k73fb"]
+atlas = ExtResource("3_o43bi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17ekr"]
+atlas = ExtResource("3_o43bi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5edk3"]
+atlas = ExtResource("3_o43bi")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkr7l"]
+atlas = ExtResource("3_o43bi")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvuyj"]
+atlas = ExtResource("3_o43bi")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2838y"]
+atlas = ExtResource("3_o43bi")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gal8s"]
+atlas = ExtResource("3_o43bi")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8ph5"]
+atlas = ExtResource("3_o43bi")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnnxh"]
+atlas = ExtResource("3_o43bi")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eswvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k73fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17ekr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5edk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkr7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvuyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2838y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gal8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8ph5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnnxh")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 10.0
+}]
+
+[sub_resource type="Environment" id="Environment_yrrjd"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
 
 [node name="Rune" type="Control"]
 custom_minimum_size = Vector2(32, 32)
@@ -14,5 +91,16 @@ offset_bottom = 16.0
 script = ExtResource("1_yrrjd")
 
 [node name="RuneSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_x1jr1")
-offset = Vector2(16, 16)
+modulate = Color(0.9490196, 0.15294118, 0.3764706, 1)
+position = Vector2(16, 16)
+texture = ExtResource("2_yrrjd")
+
+[node name="BrightAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1.698, 1.698, 1.698, 1)
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_eswvp")
+animation = &"new_animation"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yrrjd")

@@ -14,23 +14,23 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="HBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="Rune" parent="HBoxContainer/HBoxContainer3" instance=ExtResource("1_is5d7")]
+[node name="Rune" parent="HBoxContainer/VBoxContainer4" instance=ExtResource("1_is5d7")]
 layout_mode = 2
-rune_type = 4
-enabled = true
+rune_type = 5
+enabled = false
 
-[node name="Rune2" parent="HBoxContainer/HBoxContainer3" instance=ExtResource("1_is5d7")]
+[node name="Rune2" parent="HBoxContainer/VBoxContainer4" instance=ExtResource("1_is5d7")]
 layout_mode = 2
-rune_type = 1
-enabled = null
+rune_type = 5
 
-[node name="Rune3" parent="HBoxContainer/HBoxContainer3" instance=ExtResource("1_is5d7")]
+[node name="Rune3" parent="HBoxContainer/VBoxContainer4" instance=ExtResource("1_is5d7")]
+modulate = Color(2, 2, 2, 1)
 layout_mode = 2
-rune_type = 3
-enabled = null
+rune_type = 5
+ready_to_use = true
 
 [node name="CardSlot" parent="HBoxContainer" instance=ExtResource("1_yqmkh")]
 layout_mode = 2
@@ -66,18 +66,25 @@ alignment = 2
 [node name="CardSlot2" parent="HBoxContainer/VBoxContainer" instance=ExtResource("1_yqmkh")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 alignment = 2
 
-[node name="Rune" parent="HBoxContainer/HBoxContainer2" instance=ExtResource("1_is5d7")]
+[node name="Rune" parent="HBoxContainer/VBoxContainer3" instance=ExtResource("1_is5d7")]
 layout_mode = 2
-enabled = null
+rune_type = 4
+enabled = false
 
-[node name="Rune2" parent="HBoxContainer/HBoxContainer2" instance=ExtResource("1_is5d7")]
+[node name="Rune2" parent="HBoxContainer/VBoxContainer3" instance=ExtResource("1_is5d7")]
+modulate = Color(2, 2, 2, 1)
 layout_mode = 2
-enabled = null
+ready_to_use = true
 
-[node name="Rune3" parent="HBoxContainer/HBoxContainer2" instance=ExtResource("1_is5d7")]
+[node name="Rune3" parent="HBoxContainer/VBoxContainer3" instance=ExtResource("1_is5d7")]
+modulate = Color(4, 4, 4, 1)
 layout_mode = 2
-enabled = true
+rune_type = 4
+ready_to_use = true

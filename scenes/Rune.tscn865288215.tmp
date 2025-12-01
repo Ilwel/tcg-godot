@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci10ce30hduqg"]
+
+[ext_resource type="Script" uid="uid://c55515d7qsxac" path="res://scripts/Rune.gd" id="1_yrrjd"]
+[ext_resource type="Texture2D" uid="uid://dv1dypxcly3tm" path="res://assets/runes/DarkRune.png" id="2_yrrjd"]
+
+[sub_resource type="Environment" id="Environment_yrrjd"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+
+[node name="Rune" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_yrrjd")
+rune_type = 4
+
+[node name="RuneSprite" type="Sprite2D" parent="."]
+modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
+texture = ExtResource("2_yrrjd")
+offset = Vector2(16, 16)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yrrjd")
