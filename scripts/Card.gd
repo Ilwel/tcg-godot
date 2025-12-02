@@ -70,6 +70,7 @@ func reset_shadow():
 	shadow.position = default_shadow_pos
 
 func _on_card_area_mouse_entered() -> void:
+	print("test")
 	emit_signal("hovered", self)
 
 

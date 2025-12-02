@@ -1,7 +1,7 @@
 @tool
 extends Control
 
-enum RuneType { FIRE, WATER, EARTH, AIR, DARK, LIGHT }
+enum RuneType { Fire, Water, Earth, Air, Dark, Light }
 @export var rune_type: RuneType
 @onready var sprite: Sprite2D = $RuneSprite
 @onready var bright_animation: AnimatedSprite2D = $BrightAnimation
@@ -9,17 +9,17 @@ enum RuneType { FIRE, WATER, EARTH, AIR, DARK, LIGHT }
 @export var ready_to_use = false
 
 func get_rune_color() -> Color:
-	if rune_type == RuneType.FIRE:
+	if rune_type == RuneType.Fire:
 		return Color("f22760ff")
-	elif rune_type == RuneType.WATER:
+	elif rune_type == RuneType.Water:
 		return Color("005debff")
-	elif rune_type == RuneType.EARTH:
+	elif rune_type == RuneType.Earth:
 		return Color("53fa43ff")
-	elif rune_type == RuneType.AIR:
+	elif rune_type == RuneType.Air:
 		return Color("63cbe9ff")
-	elif rune_type == RuneType.DARK:
+	elif rune_type == RuneType.Dark:
 		return Color("#181825")
-	elif rune_type == RuneType.LIGHT:
+	elif rune_type == RuneType.Light:
 		return Color("#ffffff")
 	else:
 		return Color("ffffff")
@@ -35,7 +35,7 @@ func set_glow(state: bool):
 	if bright_animation:
 		bright_animation.visible = state
 	if state:
-		if rune_type == RuneType.DARK:
+		if rune_type == RuneType.Dark:
 			_set_intensity(4.0)
 		else:
 			_set_intensity(2.0)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://toxx8qnwb7op"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdd14"]
+bg_color = Color(0.06666667, 0.06666667, 0.105882354, 0.94509804)
+
+[node name="ModalScreen" type="CenterContainer"]
+z_index = 10
+custom_minimum_size = Vector2(960, 500)
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(960, 540)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pdd14")
