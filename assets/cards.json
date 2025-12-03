@@ -29,9 +29,9 @@
 
   { "id": "king",     "nome": "King",                "custo": 1, "atk": 1, "hp": 5,  "art": "res://assets/card/arts/King.png" },
   { "id": "reaper",     "nome": "Reaper",         "custo": 2, "atk": 3, "hp": 7,  "art": "res://assets/card/arts/Reaper.png" },
-  { "id": "dragao_3",     "nome": "Dragão Ancião",       "custo": 3, "atk": 5, "hp": 10, "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "watcher",     "nome": "Watcher",       "custo": 3, "atk": 5, "hp": 10, "art": "res://assets/card/arts/Watcher.png" },
 
-  { "id": "golem_1",      "nome": "Golem de Pedra",      "custo": 1, "atk": 1, "hp": 6,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "lost",      "nome": "Lost",      "custo": 1, "atk": 1, "hp": 6,  "art": "res://assets/card/arts/Lost.png" },
   { "id": "golem_2",      "nome": "Golem de Ferro",      "custo": 2, "atk": 2, "hp": 8,  "art": "res://assets/card/arts/NoArt.png" },
   { "id": "golem_3",      "nome": "Golem Titânico",      "custo": 3, "atk": 3, "hp": 10, "art": "res://assets/card/arts/NoArt.png" },
 
