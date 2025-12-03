@@ -7,7 +7,7 @@
   { "id": "arqueira_2",   "nome": "Caçadora da Floresta","custo": 2, "atk": 3, "hp": 6,  "art": "res://assets/card/arts/NoArt.png" },
   { "id": "arqueira_3",   "nome": "Patrulheira Elite",   "custo": 3, "atk": 4, "hp": 8,  "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "mago_1",       "nome": "Mago Aprendiz",       "custo": 1, "atk": 1, "hp": 4,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "acolyte",       "nome": "Acolyte",       "custo": 1, "atk": 1, "hp": 4,  "art": "res://assets/card/arts/Acolyte.png" },
   { "id": "mago_2",       "nome": "Invocador Básico",    "custo": 2, "atk": 2, "hp": 6,  "art": "res://assets/card/arts/NoArt.png" },
   { "id": "mago_3",       "nome": "Arcanista",           "custo": 3, "atk": 3, "hp": 8,  "art": "res://assets/card/arts/NoArt.png" },
 
@@ -27,7 +27,7 @@
   { "id": "orc_2",        "nome": "Orc Brutamonte",      "custo": 2, "atk": 3, "hp": 7,  "art": "res://assets/card/arts/NoArt.png" },
   { "id": "orc_3",        "nome": "Orc Guerreiro Alfa",  "custo": 3, "atk": 4, "hp": 9,  "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "dragao_1",     "nome": "King",                "custo": 1, "atk": 1, "hp": 5,  "art": "res://assets/card/arts/King.png" },
+  { "id": "king",     "nome": "King",                "custo": 1, "atk": 1, "hp": 5,  "art": "res://assets/card/arts/King.png" },
   { "id": "dragao_2",     "nome": "Draco Jovem",         "custo": 2, "atk": 3, "hp": 7,  "art": "res://assets/card/arts/NoArt.png" },
   { "id": "dragao_3",     "nome": "Dragão Ancião",       "custo": 3, "atk": 5, "hp": 10, "art": "res://assets/card/arts/NoArt.png" },
 
