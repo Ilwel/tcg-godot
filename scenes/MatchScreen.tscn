@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dg3ptgcg5gwir"]
 
-[ext_resource type="Script" uid="uid://dqw7wkkmrik1m" path="res://scripts/Match.gd" id="1_5801h"]
+[ext_resource type="Script" uid="uid://c0dsnx1u7itpk" path="res://scenes/MatchScreen.gd" id="1_72yi4"]
 [ext_resource type="PackedScene" uid="uid://dldvyaaoybfb7" path="res://scenes/Fields.tscn" id="2_pdd14"]
 [ext_resource type="PackedScene" uid="uid://bhpc4srugs3jf" path="res://scenes/HandNDeck.tscn" id="3_qv3un"]
 [ext_resource type="PackedScene" uid="uid://toxx8qnwb7op" path="res://scenes/ModalScreen.tscn" id="4_im68l"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bsqnk021s05k1" path="res://scenes/CoinWindow.gd" id="5_fji38"]
 
 [node name="MatchScrren" type="Node2D"]
-script = ExtResource("1_5801h")
+script = ExtResource("1_72yi4")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
@@ -43,6 +43,7 @@ theme_override_colors/font_color = Color(0.8039216, 0.8392157, 0.95686275, 1)
 theme_override_fonts/font = ExtResource("5_72yi4")
 theme_override_font_sizes/font_size = 20
 text = "Heads or Tails?"
+horizontal_alignment = 1
 
 [node name="CoinDecision" type="HBoxContainer" parent="ModalScreen/CoinWindow"]
 layout_mode = 2
@@ -55,3 +56,13 @@ face_parm = true
 [node name="Coin2" parent="ModalScreen/CoinWindow/CoinDecision" instance=ExtResource("4_pdd14")]
 layout_mode = 2
 face_parm = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ModalScreen/CoinWindow"]
+layout_mode = 2
+alignment = 1
+
+[node name="Coin" parent="ModalScreen/CoinWindow/HBoxContainer" instance=ExtResource("4_pdd14")]
+layout_mode = 2
+face_parm = true
+
+[editable path="HandNDeck"]

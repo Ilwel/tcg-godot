@@ -1,7 +1,7 @@
 class_name PlayerDeck extends Node2D
 
-@export var cards = []
 @export var player_hand: HandFlat
+@export var player_deck: Match.PlayerType
 
 @onready var card_scene: PackedScene = preload("res://scenes/Card.tscn")
 @onready var deck_size_lbl = $DeckSizeContainer/DeckSizeLbl
@@ -19,35 +19,40 @@ func _on_area_input(viewport, event, shape_idx):
 		draw_card()
 
 func draw_card():
-	if cards.is_empty():
+	if Match.players[player_deck]["cards"].is_empty():
 		print("Deck vazio!")
 		return
 
 	# remove a última carta (topo da pilha)
-	var card_id: String = cards.pop_back()
+	var card_id: String = Match.players[player_deck]["cards"].pop_back()
 	if card_id:
 		var card = Globals.create_card_from_id(card_id)
 		player_hand.add_card(card, self)
 		
+func draw_n(n: int):
+	for i in range(n):
+		draw_card()
+		await get_tree().create_timer(0.3).timeout
+
 func import_ids(id_list: Array) -> void:
-	cards = id_list.duplicate()
+	Match.players[player_deck]["cards"] = id_list.duplicate()
 
 func import_data(data_list: Array) -> void:
-	cards.clear()
+	Match.players[player_deck]["cards"].clear()
 	for data in data_list:
-		cards.append(data["id"])
+		Match.players[player_deck]["cards"].append(data["id"])
 
 func shuffle() -> void:
-	var n := cards.size()
+	var n = Match.players[player_deck]["cards"].size()
 	for i in range(n - 1, 0, -1):
 		var j := randi() % (i + 1)
-		var temp = cards[i]
-		cards[i] = cards[j]
-		cards[j] = temp
+		var temp = Match.players[player_deck]["cards"][i]
+		Match.players[player_deck]["cards"][i] = Match.players[player_deck]["cards"][j]
+		Match.players[player_deck]["cards"][j] = temp
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	deck_size_lbl.text = str(cards.size())
+	deck_size_lbl.text = str(Match.players[player_deck]["cards"].size())
 	pass
 
 func _on_area_2d_mouse_entered() -> void:

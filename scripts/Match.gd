@@ -1,11 +1,18 @@
-extends Node
+extends Node2D
 
 enum PlayerType{
 	Player,
 	Enemy
 }
 
-enum PhaseType{
+enum GamePhaseType{
+	Toss,
+	Init,
+	Game,
+	End
+}
+
+enum TurnPhaseType{
 	Draw,
 	Main,
 	Battle,
@@ -13,26 +20,24 @@ enum PhaseType{
 	End
 }
 
-@onready var player := {
-	"hp": 10,
-	"deck": [],
-	"runes": [],
-	"hand": []
+@onready var players = {
+	PlayerType.Player: {	
+		"hp": 10,
+		"deck": [],
+		"runes": [],
+		"hand": []
+	},
+	PlayerType.Enemy: {
+		"hp": 10,
+		"deck": [],
+		"runes": [],
+		"hand": []
+	}
 }
 
-@onready var enemy:={
-	"hp": 10,
-	"deck": [],
-	"runes": [],
-	"hand": []
-}
-
-@onready var match :={
+@onready var match_game :={
 	"current_player": PlayerType.Player,
-	"current_phase": PhaseType.Draw,
+	"current_turn_phase": TurnPhaseType.Draw,
+	"current_game_phase": GamePhaseType.Toss,
 	"turn_count": 0
 }
-
-func _ready():
-	pass
-	
