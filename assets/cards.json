@@ -35,7 +35,7 @@
   { "id": "golem_2",      "nome": "Golem de Ferro",      "custo": 2, "atk": 2, "hp": 8,  "art": "res://assets/card/arts/NoArt.png" },
   { "id": "golem_3",      "nome": "Golem Titânico",      "custo": 3, "atk": 3, "hp": 10, "art": "res://assets/card/arts/NoArt.png" },
 
-  { "id": "fera_1",       "nome": "Lobo Feroz",          "custo": 1, "atk": 2, "hp": 5,  "art": "res://assets/card/arts/NoArt.png" },
+  { "id": "monk",       "nome": "Monk",          "custo": 1, "atk": 2, "hp": 5,  "art": "res://assets/card/arts/Monk.png" },
   { "id": "fera_2",       "nome": "Urso Selvagem",       "custo": 2, "atk": 3, "hp": 7,  "art": "res://assets/card/arts/NoArt.png" },
   { "id": "fera_3",       "nome": "Fera Primeva",        "custo": 3, "atk": 4, "hp": 9,  "art": "res://assets/card/arts/NoArt.png" }
 ]
