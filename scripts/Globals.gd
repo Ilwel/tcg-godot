@@ -73,6 +73,7 @@ func create_card_from_id(id: String) -> Card:
 	card.cost = data["custo"]
 	card.atk = data["atk"]
 	card.hp = data["hp"]
+	card.theme = data["theme"]
 
 	var art_path = data.get("art", "res://assets/card/arts/NoArt.png")
 	var art_node: Sprite2D = card.get_node("FaceCard/ArtCanvas/Art")
