@@ -2,11 +2,11 @@
 class_name HandFlat extends Node2D
 
 @export var card_manager: CardManager
+@export var hand_player: Match.PlayerType = Match.PlayerType.Player
+@export var ROW_Y := 510.0                # altura da mão (ajuste livre)
 
-const SCREEN_WIDTH := 960
-const BASE_Y := 1000              	# altura da linha da mão (ajusta no gosto)
+const SCREEN_WIDTH := 960            	# altura da linha da mão (ajusta no gosto)
 const CARD_SPACING := 110       	# distância entre as cartas
-const ROW_Y := 510.0                # altura da mão (ajuste livre)
 
 const HOVER_OFFSET = 50
 
@@ -42,7 +42,8 @@ func update_card_transform_flat(card: Card, target_pos: Vector2, is_highlighting
 	return tween
 	
 func after_add_card(card: Card):
-	card.get_node("CardArea/CardCollision").disabled = false
+	if hand_player == Match.PlayerType.Player:
+		card.get_node("CardArea/CardCollision").disabled = false
 
 func reposition_cards_flat() -> void:
 	var count := hand.size()

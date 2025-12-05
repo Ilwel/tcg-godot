@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnd3tr6ouf7b3"]
+[gd_scene load_steps=10 format=3 uid="uid://cnd3tr6ouf7b3"]
 
 [ext_resource type="Texture2D" uid="uid://0xh7olx4p5j1" path="res://assets/card/arts/King.png" id="1_4dx8l"]
 [ext_resource type="Script" uid="uid://dddy5upbtshfv" path="res://scripts/Card.gd" id="1_qf083"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dio20hxoq2ob4" path="res://assets/card/CardShadow.png" id="2_5273u"]
 [ext_resource type="Texture2D" uid="uid://yqasg4kctx4c" path="res://assets/card/CostSprite.png" id="4_40ytf"]
 [ext_resource type="FontFile" uid="uid://smkfvnem56cw" path="res://assets/font/ark-pixel-10px-monospaced-latin.ttf" id="5_40ytf"]
+[ext_resource type="Texture2D" uid="uid://dq2fy5rb8eldv" path="res://assets/card/CardBack.png" id="7_qbjcq"]
 
 [sub_resource type="Theme" id="Theme_40ytf"]
 
@@ -92,6 +93,9 @@ theme_override_colors/font_color = Color(0.06666667, 0.06666667, 0.105882354, 1)
 theme_override_fonts/font = ExtResource("5_40ytf")
 theme_override_font_sizes/font_size = 10
 text = "2"
+
+[node name="CardBack" type="Sprite2D" parent="."]
+texture = ExtResource("7_qbjcq")
 
 [node name="CardArea" type="Area2D" parent="."]
 

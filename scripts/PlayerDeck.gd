@@ -1,7 +1,7 @@
 class_name PlayerDeck extends Node2D
 
 @export var player_hand: HandFlat
-@export var player_deck: Match.PlayerType
+@export var deck_player: Match.PlayerType
 
 @onready var card_scene: PackedScene = preload("res://scenes/Card.tscn")
 @onready var deck_size_lbl = $DeckSizeContainer/DeckSizeLbl
@@ -9,6 +9,8 @@ class_name PlayerDeck extends Node2D
 @onready var deck_collision = $Area2D/CollisionShape2D
 
 func _ready() -> void:
+	if deck_player == Match.PlayerType.Enemy:
+		deck_collision.disabled = true
 	import_ids(Globals.load_cards_from_json("res://assets/decks/init_deck.json"))
 	randomize()
 	shuffle()
@@ -20,15 +22,18 @@ func _on_area_input(viewport, event, shape_idx):
 		draw_card()
 
 func draw_card(game_input: bool = false):
-	if Match.match_game["current_turn_phase"] == Match.TurnPhaseType.Draw or game_input:
-		if Match.players[player_deck]["cards"].is_empty():
+	if Match.match_game["current_turn_phase"] == Match.TurnPhaseType.Draw and Match.match_game["current_player"] == Match.PlayerType.Player or game_input:
+		if Match.players[deck_player]["cards"].is_empty():
 			print("Deck vazio!")
 			return
 
 		# remove a última carta (topo da pilha)
-		var card_id: String = Match.players[player_deck]["cards"].pop_back()
+		var card_id: String = Match.players[deck_player]["cards"].pop_back()
 		if card_id:
 			var card = Globals.create_card_from_id(card_id)
+			if deck_player == Match.PlayerType.Enemy:
+				card.face_up = false
+				card.player_cant_touch = true
 			player_hand.add_card(card, self)
 			if not game_input:
 				Match.match_game["current_turn_phase"] = Match.TurnPhaseType.Main
@@ -39,24 +44,24 @@ func draw_n(n: int, game_input: bool = false):
 		await get_tree().create_timer(0.3).timeout
 
 func import_ids(id_list: Array) -> void:
-	Match.players[player_deck]["cards"] = id_list.duplicate()
+	Match.players[deck_player]["cards"] = id_list.duplicate()
 
 func import_data(data_list: Array) -> void:
-	Match.players[player_deck]["cards"].clear()
+	Match.players[deck_player]["cards"].clear()
 	for data in data_list:
-		Match.players[player_deck]["cards"].append(data["id"])
+		Match.players[deck_player]["cards"].append(data["id"])
 
 func shuffle() -> void:
-	var n = Match.players[player_deck]["cards"].size()
+	var n = Match.players[deck_player]["cards"].size()
 	for i in range(n - 1, 0, -1):
 		var j := randi() % (i + 1)
-		var temp = Match.players[player_deck]["cards"][i]
-		Match.players[player_deck]["cards"][i] = Match.players[player_deck]["cards"][j]
-		Match.players[player_deck]["cards"][j] = temp
+		var temp = Match.players[deck_player]["cards"][i]
+		Match.players[deck_player]["cards"][i] = Match.players[deck_player]["cards"][j]
+		Match.players[deck_player]["cards"][j] = temp
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	deck_size_lbl.text = str(Match.players[player_deck]["cards"].size())
+	deck_size_lbl.text = str(Match.players[deck_player]["cards"].size())
 	pass
 
 func _on_area_2d_mouse_entered() -> void:

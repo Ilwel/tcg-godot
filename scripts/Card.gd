@@ -17,7 +17,11 @@ const HOVER_OFFSET := 30
 @export var card_image: Node2D 
 @export var max_offset_shadow: float = 50.0
 @export var theme:String = "dark"
+@export var face_up: bool = true;
+@export var player_cant_touch = false
 
+@onready var face_card: Node2D = $FaceCard
+@onready var card_back: Sprite2D = $CardBack
 @onready var cost_lbl: Label = $FaceCard/CostNode/CostLbl
 @onready var cost_sprite: Sprite2D = $FaceCard/CostNode/CostSprite
 @onready var canvas_sprite: Sprite2D = $FaceCard/ArtCanvas/BackgroundSprite
@@ -30,15 +34,25 @@ const HOVER_OFFSET := 30
 @onready var default_face_pos: Vector2 = face.position
 @onready var shadow: Sprite2D = $Shadow
 @onready var default_shadow_pos: Vector2 = shadow.position
+@onready var card_collision = $CardArea/CardCollision
+
+func handle_face_up():
+	face_card.visible = face_up
+	card_back.visible = !face_up
+	
+func handle_player_touch():
+	print("1: ", card_collision.disabled, player_cant_touch)
+	card_collision.disabled = player_cant_touch
+	print("2: ", card_collision.disabled, player_cant_touch)
 
 func _ready():
 	get_parent().connect_card_signals(self)
-	#theme_handler()
-	#cost_lbl.visible = true;
+	handle_face_up()
 	cost_lbl.set_text(str(cost))
 	name_lbl.set_text(card_name)
 	atk_lbl.set_text(str(atk))
 	hp_lbl.set_text(str(hp))
+	handle_player_touch()
 	
 func _process(delta):
 	_update_graphics_values()
