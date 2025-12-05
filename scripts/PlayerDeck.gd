@@ -33,9 +33,9 @@ func draw_card(game_input: bool = false):
 			if not game_input:
 				Match.match_game["current_turn_phase"] = Match.TurnPhaseType.Main
 		
-func draw_n(n: int):
+func draw_n(n: int, game_input: bool = false):
 	for i in range(n):
-		draw_card(true)
+		draw_card(game_input)
 		await get_tree().create_timer(0.3).timeout
 
 func import_ids(id_list: Array) -> void:
