@@ -11,5 +11,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Match.match_game["current_game_phase"] == Match.GamePhaseType.Init:
-		player_deck.draw_n(5)
+		player_deck.deck_collision.disabled = true
 		Match.match_game["current_game_phase"] = Match.GamePhaseType.Game
+		await player_deck.draw_n(5)
+		player_deck.deck_collision.disabled = false

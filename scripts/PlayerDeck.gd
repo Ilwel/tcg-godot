@@ -6,9 +6,10 @@ class_name PlayerDeck extends Node2D
 @onready var card_scene: PackedScene = preload("res://scenes/Card.tscn")
 @onready var deck_size_lbl = $DeckSizeContainer/DeckSizeLbl
 @onready var deck_size_container = $DeckSizeContainer
+@onready var deck_collision = $Area2D/CollisionShape2D
 
 func _ready() -> void:
-	import_ids(Globals.load_cards_from_json("res://assets/test_deck.json"))
+	import_ids(Globals.load_cards_from_json("res://assets/decks/init_deck.json"))
 	randomize()
 	shuffle()
 	$Area2D.input_event.connect(_on_area_input)
@@ -18,20 +19,23 @@ func _on_area_input(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		draw_card()
 
-func draw_card():
-	if Match.players[player_deck]["cards"].is_empty():
-		print("Deck vazio!")
-		return
+func draw_card(game_input: bool = false):
+	if Match.match_game["current_turn_phase"] == Match.TurnPhaseType.Draw or game_input:
+		if Match.players[player_deck]["cards"].is_empty():
+			print("Deck vazio!")
+			return
 
-	# remove a última carta (topo da pilha)
-	var card_id: String = Match.players[player_deck]["cards"].pop_back()
-	if card_id:
-		var card = Globals.create_card_from_id(card_id)
-		player_hand.add_card(card, self)
+		# remove a última carta (topo da pilha)
+		var card_id: String = Match.players[player_deck]["cards"].pop_back()
+		if card_id:
+			var card = Globals.create_card_from_id(card_id)
+			player_hand.add_card(card, self)
+			if not game_input:
+				Match.match_game["current_turn_phase"] = Match.TurnPhaseType.Main
 		
 func draw_n(n: int):
 	for i in range(n):
-		draw_card()
+		draw_card(true)
 		await get_tree().create_timer(0.3).timeout
 
 func import_ids(id_list: Array) -> void:
