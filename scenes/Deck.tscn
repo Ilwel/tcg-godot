@@ -1,23 +1,23 @@
 [gd_scene load_steps=6 format=3 uid="uid://b0t8mr6wse0fo"]
 
-[ext_resource type="Texture2D" uid="uid://dq2fy5rb8eldv" path="res://assets/card/CardBack.png" id="1_6le0c"]
-[ext_resource type="Script" uid="uid://dd3ur453hra2" path="res://scripts/PlayerDeck.gd" id="2_w7a2g"]
-[ext_resource type="Texture2D" uid="uid://1yp6p2x272vt" path="res://assets/card/DeckTickeness.png" id="3_mln2t"]
-[ext_resource type="FontFile" uid="uid://smkfvnem56cw" path="res://assets/font/ark-pixel-10px-monospaced-latin.ttf" id="4_mln2t"]
+[ext_resource type="Script" uid="uid://b2bts0ig545kh" path="res://scripts/Deck.gd" id="1_3d78h"]
+[ext_resource type="Texture2D" uid="uid://dq2fy5rb8eldv" path="res://assets/card/CardBack.png" id="2_lk6u7"]
+[ext_resource type="Texture2D" uid="uid://1yp6p2x272vt" path="res://assets/card/DeckTickeness.png" id="3_l3jxq"]
+[ext_resource type="FontFile" uid="uid://smkfvnem56cw" path="res://assets/font/ark-pixel-10px-monospaced-latin.ttf" id="4_aeqa8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7a2g"]
 size = Vector2(108.89444, 148.49243)
 
 [node name="PlayerDeck" type="Node2D"]
 rotation = 0.7853982
-script = ExtResource("2_w7a2g")
+script = ExtResource("1_3d78h")
 
 [node name="CardBackSprite" type="Sprite2D" parent="."]
 position = Vector2(-4, -4)
-texture = ExtResource("1_6le0c")
+texture = ExtResource("2_lk6u7")
 
 [node name="DeckTicknessSprite" type="Sprite2D" parent="."]
-texture = ExtResource("3_mln2t")
+texture = ExtResource("3_l3jxq")
 
 [node name="DeckSizeContainer" type="CenterContainer" parent="."]
 offset_left = -33.234016
@@ -29,7 +29,7 @@ rotation = -0.7853982
 [node name="DeckSizeLbl" type="Label" parent="DeckSizeContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.09411765, 0.09411765, 0.14509805, 1)
-theme_override_fonts/font = ExtResource("4_mln2t")
+theme_override_fonts/font = ExtResource("4_aeqa8")
 theme_override_font_sizes/font_size = 20
 text = "60"
 

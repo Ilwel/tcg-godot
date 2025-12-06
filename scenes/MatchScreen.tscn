@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://dg3ptgcg5gwir"]
 
-[ext_resource type="Script" uid="uid://c0dsnx1u7itpk" path="res://scenes/MatchScreen.gd" id="1_72yi4"]
+[ext_resource type="Script" uid="uid://c0dsnx1u7itpk" path="res://scripts/MatchScreen.gd" id="1_72yi4"]
 [ext_resource type="PackedScene" uid="uid://dldvyaaoybfb7" path="res://scenes/Fields.tscn" id="2_pdd14"]
 [ext_resource type="PackedScene" uid="uid://bhpc4srugs3jf" path="res://scenes/HandNDeck.tscn" id="3_qv3un"]
 [ext_resource type="PackedScene" uid="uid://toxx8qnwb7op" path="res://scenes/ModalScreen.tscn" id="4_im68l"]
 [ext_resource type="PackedScene" uid="uid://bm7dk87egunys" path="res://scenes/Coin.tscn" id="4_pdd14"]
 [ext_resource type="FontFile" uid="uid://smkfvnem56cw" path="res://assets/font/ark-pixel-10px-monospaced-latin.ttf" id="5_72yi4"]
-[ext_resource type="Script" uid="uid://bsqnk021s05k1" path="res://scenes/CoinWindow.gd" id="5_fji38"]
+[ext_resource type="Script" uid="uid://bsqnk021s05k1" path="res://scripts/CoinWindow.gd" id="5_fji38"]
 
 [node name="MatchScrren" type="Node2D"]
 script = ExtResource("1_72yi4")
@@ -30,6 +30,9 @@ layout_mode = 2
 [node name="HandNDeck" parent="." instance=ExtResource("3_qv3un")]
 position = Vector2(0, 1)
 script = null
+
+[node name="EnemyDeck" parent="HandNDeck" index="3"]
+player_type = 1
 
 [node name="EnemyHand" parent="HandNDeck" index="4"]
 hand_player = 1

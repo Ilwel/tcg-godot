@@ -4,9 +4,12 @@ class_name Card extends Node2D
 signal hovered
 signal hovered_off
 
-const dark_theme_constrast = "#cdd6f4"
-const dark_theme_main = "#11111b"
+# Theme colors
+const DARK_THEME_CONTRAST = "#cdd6f4"
+const DARK_THEME_MAIN = "#11111b"
+const LIGHT_THEME_TEXT = Color.WHITE
 
+# Constants
 const HOVER_OFFSET := 30
 
 @export var card_id: String = ""
@@ -18,7 +21,6 @@ const HOVER_OFFSET := 30
 @export var max_offset_shadow: float = 50.0
 @export var theme:String = "dark"
 @export var face_up: bool = true;
-@export var player_cant_touch = false
 
 @onready var face_card: Node2D = $FaceCard
 @onready var card_back: Sprite2D = $CardBack
@@ -40,47 +42,40 @@ func handle_face_up():
 	face_card.visible = face_up
 	card_back.visible = !face_up
 	
-func handle_player_touch():
-	print("1: ", card_collision.disabled, player_cant_touch)
-	card_collision.disabled = player_cant_touch
-	print("2: ", card_collision.disabled, player_cant_touch)
+func handle_player_touch(player_can_touch: bool = true):
+	if card_collision:
+		card_collision.disabled = not player_can_touch
 
 func _ready():
 	get_parent().connect_card_signals(self)
 	handle_face_up()
-	cost_lbl.set_text(str(cost))
-	name_lbl.set_text(card_name)
-	atk_lbl.set_text(str(atk))
-	hp_lbl.set_text(str(hp))
-	handle_player_touch()
-	
-func _process(delta):
 	_update_graphics_values()
+	
+func _process(_delta):
+	pass
 
-func show_details(show: bool):
-	if show:
-		pass
-	else:
-		pass
-		
-		
-func theme_handler():
-	if theme == "dark":
-		cost_lbl.add_theme_color_override("font_color", dark_theme_main)
-		cost_sprite.modulate = Color.WHITE
-		canvas_sprite.modulate = Color.WHITE
-		atk_lbl.add_theme_color_override("font_color", dark_theme_main)
-		hp_lbl.add_theme_color_override("font_color", dark_theme_main)
-		bar_lbl.add_theme_color_override("font_color", dark_theme_main)
-		name_lbl.add_theme_color_override("font_color", dark_theme_constrast)
-	else:
-		cost_lbl.add_theme_color_override("font_color", dark_theme_constrast)
-		cost_sprite.modulate = Color(dark_theme_main)
-		canvas_sprite.modulate = Color(dark_theme_main)
-		atk_lbl.add_theme_color_override("font_color", dark_theme_constrast)
-		hp_lbl.add_theme_color_override("font_color", dark_theme_constrast)
-		bar_lbl.add_theme_color_override("font_color", dark_theme_constrast)
-		name_lbl.add_theme_color_override("font_color", dark_theme_main)
+func show_details(_show: bool):
+	# TODO: Implement details view if needed
+	pass
+
+func theme_handler() -> void:
+	var is_dark_theme := theme == "dark"
+	_apply_theme_colors(is_dark_theme)
+	_apply_sprite_modulation(is_dark_theme)
+
+func _apply_theme_colors(is_dark: bool) -> void:
+	var main_color := DARK_THEME_MAIN if is_dark else DARK_THEME_CONTRAST
+	var contrast_color := DARK_THEME_CONTRAST if is_dark else DARK_THEME_MAIN
+	
+	for label in [cost_lbl, atk_lbl, hp_lbl, bar_lbl]:
+		label.add_theme_color_override("font_color", main_color)
+	
+	name_lbl.add_theme_color_override("font_color", contrast_color)
+
+func _apply_sprite_modulation(is_dark: bool) -> void:
+	var modulate_color := Color.WHITE if is_dark else Color(DARK_THEME_MAIN)
+	cost_sprite.modulate = modulate_color
+	canvas_sprite.modulate = modulate_color
 
 func set_card_values(dict: Dictionary):
 	cost = int(dict["cost"])
@@ -90,16 +85,17 @@ func set_card_values(dict: Dictionary):
 	
 	_update_graphics_values()
 	
-func _update_graphics_values():
+func _update_graphics_values() -> void:
 	theme_handler()
+	_update_labels()
+	
+func _update_labels() -> void:
 	cost_lbl.set_text(str(cost))
 	name_lbl.set_text(card_name)
 	atk_lbl.set_text(str(atk))
 	hp_lbl.set_text(str(hp))
 	
 func handle_shadow() -> void:
-	# Y position is enver changed.
-	# Only x changes depending on how far we are from the center of the screen
 	var center: Vector2 = get_viewport_rect().size / 2.0
 	var distance: float = global_position.x - center.x
 	
@@ -110,9 +106,7 @@ func reset_shadow():
 	shadow.position = default_shadow_pos
 
 func _on_card_area_mouse_entered() -> void:
-	print("test")
 	emit_signal("hovered", self)
-
 
 func _on_card_area_mouse_exited() -> void:
 	emit_signal("hovered_off", self)

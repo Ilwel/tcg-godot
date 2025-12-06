@@ -3,28 +3,28 @@ class_name HandFlat extends Node2D
 
 @export var card_manager: CardManager
 @export var hand_player: Match.PlayerType = Match.PlayerType.Player
-@export var ROW_Y := 510.0                # altura da mão (ajuste livre)
+@export var ROW_Y: float = 510.0                # altura da mão (ajuste livre)
 
-const SCREEN_WIDTH := 960            	# altura da linha da mão (ajusta no gosto)
-const CARD_SPACING := 110       	# distância entre as cartas
+const CARD_SPACING: float = 110.0       # distância entre as cartas
+const HOVER_OFFSET: float = 50.0
 
-const HOVER_OFFSET = 50
+var hand: Array[Card] = []
 
-var hand: Array = []
-
-func add_card(card: Card, source: Node2D):
-	hand.push_back(card)
+func add_card(card: Card, source: Node2D) -> void:
+	hand.append(card)
 	card.get_node("CardArea/CardCollision").disabled = true
-	card_manager.add_child(card)
+	if card_manager:
+		card_manager.add_child(card)
 	card.global_position = source.global_position
 	card.rotation = source.rotation
 	reposition_cards_flat()
-	
+
 func remove_card(card: Card) -> Card:
 	if card in hand:
 		hand.erase(card)
-		card_manager.remove_child(card)
-		reposition_cards_flat()	
+		if card_manager:
+			card_manager.remove_child(card)
+		reposition_cards_flat()
 	return card
 
 func update_card_transform_flat(card: Card, target_pos: Vector2, is_highlighting: bool) -> Tween:
@@ -40,46 +40,34 @@ func update_card_transform_flat(card: Card, target_pos: Vector2, is_highlighting
 	tween.tween_property(card, "global_position", target_pos, 0.15)
 	tween.tween_property(card, "rotation", 0.0, 0.15)
 	return tween
-	
-func after_add_card(card: Card):
+
+func _enable_card_collision_if_local_player(card: Card) -> void:
 	if hand_player == Match.PlayerType.Player:
 		card.get_node("CardArea/CardCollision").disabled = false
 
-func reposition_cards_flat() -> void:
+func _calc_start_x(count: int) -> float:
+	var screen_size := get_viewport_rect().size
+	var center_x := screen_size.x / 2.0
+	var total_width := (count - 1) * CARD_SPACING
+	return center_x - total_width / 2.0
+
+func reposition_cards_flat(highlight: Card = null) -> void:
 	var count := hand.size()
 	if count == 0:
 		return
 
-	var screen_size := get_viewport().get_visible_rect().size
-	var center_x := screen_size.x / 2.0
-	var total_width := (count - 1) * CARD_SPACING
-	var start_x := center_x - total_width / 2.0
+	var start_x := _calc_start_x(count)
 
 	for i in range(count):
-		var card = hand[i]
+		var card: Card = hand[i]
 		var target_pos := Vector2(start_x + i * CARD_SPACING, ROW_Y)
-		var tween = update_card_transform_flat(card, target_pos, false)
-		tween.finished.connect(after_add_card.bind(card))
-
-func reposition_cards_flat_with_highlight(highlight: Card) -> void:
-	var count := hand.size()
-	if count == 0:
-		return
-	
-	var screen_size := get_viewport().get_visible_rect().size
-	var center_x := screen_size.x / 2.0
-	var total_width := (count - 1) * CARD_SPACING
-	var start_x := center_x - total_width / 2.0
-
-	for i in range(count):
-		var card = hand[i]
-		var target_pos := Vector2(start_x + i * CARD_SPACING, ROW_Y)
-		var is_highlighting = (card == highlight)
-		update_card_transform_flat(card, target_pos, is_highlighting)
+		var is_highlighting := (card == highlight)
+		var tween := update_card_transform_flat(card, target_pos, is_highlighting)
+		# connect the finished signal to enable collision only for player hand
+		tween.finished.connect(_enable_card_collision_if_local_player.bind(card))
 
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

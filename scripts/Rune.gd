@@ -53,7 +53,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	sprite.modulate = get_rune_color()
 	set_glow(ready_to_use)
 	if !enabled:
