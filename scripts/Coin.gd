@@ -53,15 +53,14 @@ func _process(_delta: float) -> void:
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			print("click")
 			emit_signal("click", face_parm)
 
 func _on_area_2d_mouse_entered() -> void:
 	if not is_flipping:
 		bright_animation.visible = true
 		bright_animation.play()
-		sprite_heads.modulate = Globals._set_intensity(2, sprite_heads)
-		sprite_tails.modulate = Globals._set_intensity(2, sprite_tails)
+		sprite_heads.modulate = Globals._set_intensity(1.7, sprite_heads)
+		sprite_tails.modulate = Globals._set_intensity(1.3, sprite_tails)
 
 func _on_area_2d_mouse_exited() -> void:
 	if not is_flipping:

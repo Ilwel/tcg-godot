@@ -76,7 +76,7 @@ func start_drag(card: Card) -> void:
 func finish_drag() -> void:
 	if not card_being_dragged:
 		return
-	var card_slot_found = raycast_check_for_card_slot()
+	var card_slot_found: CardSlot = raycast_check_for_card_slot()
 	var card: Card = card_being_dragged
 	card.reset_shadow()
 	card_being_dragged = null
@@ -90,6 +90,7 @@ func finish_drag() -> void:
 			card.position = Vector2(50, 70)
 			card_slot_found.card_in_slot = true
 			is_hovering_on_card = false
+			card.handle_ace_details(card_slot_found.ace_slot)
 	is_highlighting_a_card = false
 
 func connect_card_signals(card: Card) -> void:

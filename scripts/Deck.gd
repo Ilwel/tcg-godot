@@ -11,11 +11,21 @@ class_name Deck extends Node2D
 func _ready() -> void:
 	if player_type == Match.PlayerType.Enemy:
 		deck_collision.disabled = true
-	import_ids(Globals.load_cards_from_json("res://assets/decks/init_deck.json"))
-	randomize()
-	shuffle()
+		_import_current_enemy_deck()
+	else:
+		_import_current_player_deck()
 	$Area2D.input_event.connect(_on_area_input)
 	deck_size_container.modulate.a = 0.0
+	
+func _import_current_player_deck():
+	import_ids(Globals.load_deck_cards_from_json("res://assets/decks/init_deck.json"))
+	randomize()
+	shuffle()
+	
+func _import_current_enemy_deck():
+	import_ids(Globals.load_deck_cards_from_json("res://assets/decks/init_deck.json"))
+	randomize()
+	shuffle()
 
 func _on_area_input(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:

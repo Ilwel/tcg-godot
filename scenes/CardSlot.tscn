@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://45lkg4x1qc3t"]
+[gd_scene load_steps=5 format=3 uid="uid://45lkg4x1qc3t"]
 
 [ext_resource type="Texture2D" uid="uid://b5smgk26i37vg" path="res://assets/card/CardSlot.png" id="1_us08b"]
 [ext_resource type="Script" uid="uid://cbbywn0w6k8o" path="res://scripts/CardSlot.gd" id="2_or4gj"]
+[ext_resource type="Texture2D" uid="uid://d28pr7xofxg67" path="res://assets/card/AceCrown.png" id="3_4gamt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_us08b"]
 size = Vector2(100, 140)
@@ -21,6 +22,7 @@ position = Vector2(50, 70)
 texture = ExtResource("1_us08b")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -28,3 +30,7 @@ collision_mask = 2
 position = Vector2(50, 70)
 shape = SubResource("RectangleShape2D_us08b")
 debug_color = Color(0.8537045, 0, 0.12190508, 0.41960785)
+
+[node name="AceCrownSprite" type="Sprite2D" parent="."]
+position = Vector2(47, -10)
+texture = ExtResource("3_4gamt")

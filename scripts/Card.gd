@@ -53,6 +53,14 @@ func _ready():
 	
 func _process(_delta):
 	pass
+	
+func handle_ace_details(in_slot: bool):
+	if in_slot:
+		canvas_sprite.texture = load("res://assets/card/CardCanvasNoBgGold.png")
+		cost_sprite.texture = load("res://assets/card/CostSpriteGold.png")
+		canvas_sprite.modulate = Color.WHITE
+		cost_sprite.modulate = Color.WHITE
+		_apply_theme_colors(true)
 
 func show_details(_show: bool):
 	# TODO: Implement details view if needed

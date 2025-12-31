@@ -2,6 +2,25 @@ extends Node
 
 var CardScene = preload("res://scenes/Card.tscn")
 
+func snap_camera_up(camera: Camera2D, y_snap):
+	var tween = Globals.create_smooth_tween()
+	tween.tween_property(
+		camera,
+		"position:y",
+		max(camera.position.y + y_snap, y_snap),
+		0.15
+	)
+	
+func snap_camera_down(camera: Camera2D, y_snap):
+	var tween = Globals.create_smooth_tween()
+	tween.tween_property(
+		camera,
+		"position:y",
+		min(camera.position.y + y_snap, y_snap),
+		0.15
+	)
+
+
 func handle_2d_perspective(sprite: Sprite2D, mouse_pos: Vector2, angle_x_max: float, angle_y_max: float):
 	#var diff: Vector2 = (position + size) - mouse_pos
 	
@@ -23,7 +42,7 @@ func create_smooth_tween() ->Tween:
 	tween.set_ease(Tween.EASE_OUT)
 	return tween
 
-func load_cards_from_json(path: String = "res://assets/cards.json") -> Array:
+func load_deck_from_json(path: String = "res://assets/cards.json"):
 	var file = FileAccess.open(path, FileAccess.READ)
 	if file == null:
 		push_error("Erro ao abrir arquivo " + path)
@@ -37,8 +56,23 @@ func load_cards_from_json(path: String = "res://assets/cards.json") -> Array:
 
 	return parsed
 	
+func load_deck_cards_from_json(path):
+	var deck = load_deck_from_json(path)
+	return deck.cards
+	
+func load_deck_runes_from_json(path):
+	var deck = load_deck_from_json(path)
+	var runes = []
+	for rune_data in deck.runes:
+		var rune_obj = {
+			"type": rune_data,
+			"state": "disabled"
+		}
+		runes.append(rune_obj)
+	return runes
+	
 func get_card_data_by_id(id: String) -> Dictionary:
-	var all_cards: Array = load_cards_from_json()
+	var all_cards: Array = load_deck_from_json()
 
 	for data in all_cards:
 		if data["id"] == id:

@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv0krk5mtqqdy"]
+
+[ext_resource type="Script" uid="uid://dbjeat5abmjlt" path="res://scripts/SlotsSet.gd" id="1_4t3u4"]
+[ext_resource type="PackedScene" uid="uid://45lkg4x1qc3t" path="res://scenes/CardSlot.tscn" id="2_5b0qo"]
+
+[node name="PlayerSlots" type="HBoxContainer"]
+offset_right = 428.0
+offset_bottom = 140.0
+theme_override_constants/separation = 50
+alignment = 1
+script = ExtResource("1_4t3u4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="CreatureSlot1" parent="HBoxContainer" instance=ExtResource("2_5b0qo")]
+layout_mode = 2
+
+[node name="CreatureSlot2" parent="HBoxContainer" instance=ExtResource("2_5b0qo")]
+layout_mode = 2
+
+[node name="CreatureSlot3" parent="HBoxContainer" instance=ExtResource("2_5b0qo")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerAce" parent="HBoxContainer2" instance=ExtResource("2_5b0qo")]
+layout_mode = 2
+ace_slot = true

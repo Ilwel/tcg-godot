@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dldvyaaoybfb7"]
+[gd_scene load_steps=4 format=3 uid="uid://dldvyaaoybfb7"]
 
-[ext_resource type="PackedScene" uid="uid://ci10ce30hduqg" path="res://scenes/Rune.tscn" id="1_is5d7"]
-[ext_resource type="PackedScene" uid="uid://45lkg4x1qc3t" path="res://scenes/CardSlot.tscn" id="1_yqmkh"]
+[ext_resource type="Script" uid="uid://14ppy64oloob" path="res://scripts/Fields.gd" id="1_0aub2"]
+[ext_resource type="PackedScene" uid="uid://dv0krk5mtqqdy" path="res://scenes/SlotsSet.tscn" id="1_17eoa"]
+[ext_resource type="PackedScene" uid="uid://b2y176ud75jmh" path="res://scenes/RuneSet.tscn" id="2_is5d7"]
 
 [node name="Fields" type="CenterContainer"]
 anchors_preset = 15
@@ -9,82 +10,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0aub2")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="PlayerFields" type="VBoxContainer" parent="HBoxContainer3"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
+[node name="PlayerSlots" parent="HBoxContainer3/PlayerFields" instance=ExtResource("1_17eoa")]
 layout_mode = 2
 
-[node name="Rune" parent="HBoxContainer/VBoxContainer4" instance=ExtResource("1_is5d7")]
+[node name="RuneSet" parent="HBoxContainer3/PlayerFields" instance=ExtResource("2_is5d7")]
+visible = false
 layout_mode = 2
-rune_type = 5
-enabled = false
-
-[node name="Rune2" parent="HBoxContainer/VBoxContainer4" instance=ExtResource("1_is5d7")]
-layout_mode = 2
-rune_type = 5
-
-[node name="Rune3" parent="HBoxContainer/VBoxContainer4" instance=ExtResource("1_is5d7")]
-modulate = Color(2, 2, 2, 1)
-layout_mode = 2
-rune_type = 5
-ready_to_use = true
-
-[node name="CardSlot" parent="HBoxContainer" instance=ExtResource("1_yqmkh")]
-layout_mode = 2
-
-[node name="Control" type="GridContainer" parent="HBoxContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 58
-columns = 3
-
-[node name="CardSlot" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
-layout_mode = 2
-
-[node name="CardSlot2" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
-layout_mode = 2
-
-[node name="CardSlot3" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
-layout_mode = 2
-
-[node name="CardSlot4" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
-layout_mode = 2
-
-[node name="CardSlot5" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
-layout_mode = 2
-
-[node name="CardSlot6" parent="HBoxContainer/Control" instance=ExtResource("1_yqmkh")]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-alignment = 2
-
-[node name="CardSlot2" parent="HBoxContainer/VBoxContainer" instance=ExtResource("1_yqmkh")]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-alignment = 2
-
-[node name="Rune" parent="HBoxContainer/VBoxContainer3" instance=ExtResource("1_is5d7")]
-layout_mode = 2
-rune_type = 4
-enabled = false
-
-[node name="Rune2" parent="HBoxContainer/VBoxContainer3" instance=ExtResource("1_is5d7")]
-modulate = Color(2, 2, 2, 1)
-layout_mode = 2
-ready_to_use = true
-
-[node name="Rune3" parent="HBoxContainer/VBoxContainer3" instance=ExtResource("1_is5d7")]
-modulate = Color(4, 4, 4, 1)
-layout_mode = 2
-rune_type = 4
-ready_to_use = true

@@ -9,22 +9,20 @@
 size = Vector2(108.89444, 148.49243)
 
 [node name="PlayerDeck" type="Node2D"]
-rotation = 0.7853982
 script = ExtResource("1_3d78h")
 
 [node name="CardBackSprite" type="Sprite2D" parent="."]
-position = Vector2(-4, -4)
+position = Vector2(4, -4)
 texture = ExtResource("2_lk6u7")
 
 [node name="DeckTicknessSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_l3jxq")
 
 [node name="DeckSizeContainer" type="CenterContainer" parent="."]
-offset_left = -33.234016
-offset_top = -6.363965
-offset_right = 6.7659836
-offset_bottom = 33.636036
-rotation = -0.7853982
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 16.0
 
 [node name="DeckSizeLbl" type="Label" parent="DeckSizeContainer"]
 layout_mode = 2
