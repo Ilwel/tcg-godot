@@ -7,7 +7,7 @@ func snap_camera_up(camera: Camera2D, y_snap):
 	tween.tween_property(
 		camera,
 		"position:y",
-		max(camera.position.y + y_snap, y_snap),
+		max(camera.position.y - y_snap, -y_snap),
 		0.15
 	)
 	

@@ -20,19 +20,22 @@ script = ExtResource("1_72yi4")
 [node name="PlayerScreenMatch2" type="Node2D" parent="."]
 position = Vector2(6, -542)
 
-[node name="CenterContainer" type="CenterContainer" parent="PlayerScreenMatch2"]
-offset_left = -1.0
-offset_right = 959.0
-offset_bottom = 540.0
-
-[node name="Fields" parent="PlayerScreenMatch2/CenterContainer" instance=ExtResource("2_pdd14")]
-layout_mode = 2
+[node name="Fields" parent="PlayerScreenMatch2" instance=ExtResource("2_pdd14")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 250.0
+offset_top = 200.0
+offset_right = 708.0
+offset_bottom = 340.0
+grow_horizontal = 1
+grow_vertical = 1
 player = 1
 
-[node name="PlayerSlots" parent="PlayerScreenMatch2/CenterContainer/Fields/HBoxContainer3/PlayerFields" index="0"]
+[node name="PlayerSlots" parent="PlayerScreenMatch2/Fields/HBoxContainer3/PlayerFields" index="0"]
 slots_set_player = 1
 
-[node name="RuneSet" parent="PlayerScreenMatch2/CenterContainer/Fields/HBoxContainer3/PlayerFields" index="1"]
+[node name="RuneSet" parent="PlayerScreenMatch2/Fields/HBoxContainer3/PlayerFields" index="1"]
 rune_set_player = 1
 
 [node name="HandNDeck" parent="PlayerScreenMatch2" instance=ExtResource("3_qv3un")]
@@ -48,13 +51,14 @@ ROW_Y = -540.0
 
 [node name="PlayerScreenMatch" type="Node2D" parent="."]
 
-[node name="CenterContainer" type="CenterContainer" parent="PlayerScreenMatch"]
-offset_left = -1.0
-offset_right = 959.0
-offset_bottom = 540.0
-
-[node name="Fields" parent="PlayerScreenMatch/CenterContainer" instance=ExtResource("2_pdd14")]
-layout_mode = 2
+[node name="Fields" parent="PlayerScreenMatch" instance=ExtResource("2_pdd14")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 250.0
+offset_top = 200.0
+offset_right = 708.0
+offset_bottom = 340.0
 
 [node name="HandNDeck" parent="PlayerScreenMatch" instance=ExtResource("3_qv3un")]
 position = Vector2(0, 1)
@@ -157,6 +161,6 @@ face_parm = true
 [connection signal="mouse_entered" from="Camera2D/SnapCameraDownArea2/Area2D" to="Camera2D/SnapCameraDownArea2" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Camera2D/SnapCameraDownArea2/Area2D" to="Camera2D/SnapCameraDownArea2" method="_on_area_2d_mouse_exited"]
 
-[editable path="PlayerScreenMatch2/CenterContainer/Fields"]
+[editable path="PlayerScreenMatch2/Fields"]
 [editable path="PlayerScreenMatch2/HandNDeck"]
 [editable path="PlayerScreenMatch/HandNDeck"]

@@ -15,6 +15,6 @@ func _process(_delta: float) -> void:
 		player_deck.deck_collision.disabled = true
 		Match.match_game["current_game_phase"] = Match.GamePhaseType.Game
 		await player_deck.draw_n(5, true)
-		Globals.snap_camera_up(main_camera, -540)
+		Globals.snap_camera_up(main_camera, 540)
 		await enemy_deck.draw_n(5, true)
 		player_deck.deck_collision.disabled = false	

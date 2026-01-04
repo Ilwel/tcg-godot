@@ -24,5 +24,4 @@ theme_override_constants/separation = 20
 layout_mode = 2
 
 [node name="RuneSet" parent="HBoxContainer3/PlayerFields" instance=ExtResource("2_is5d7")]
-visible = false
 layout_mode = 2
