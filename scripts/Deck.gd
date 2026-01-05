@@ -87,10 +87,12 @@ func _process(_delta: float) -> void:
 	pass
 
 func _on_area_2d_mouse_entered() -> void:
+	Input.set_custom_mouse_cursor(Globals.cursor_point)
 	var tween = Globals.create_smooth_tween()
 	tween.tween_property(deck_size_container, 'modulate:a', 1.0, 0.15)
 
 
 func _on_area_2d_mouse_exited() -> void:
+	Input.set_custom_mouse_cursor(Globals.cursor_open)
 	var tween = Globals.create_smooth_tween()
 	tween.tween_property(deck_size_container, 'modulate:a', 0.0, 0.15)

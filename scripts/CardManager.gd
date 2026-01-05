@@ -8,6 +8,7 @@ const COLLISION_MASK_CARD_SLOT: int = 2
 @onready var is_hovering_on_card: bool = false
 @onready var is_highlighting_a_card: bool = false
 @onready var last_hovered_card: Card = null
+@onready var cursor_in_card_slot = false
 
 @export var player_hand_reference: HandFlat
 
@@ -23,22 +24,14 @@ func _get_highest_z_card(results: Array) -> Card:
 			highest_index = current.z_index
 	return highest
 
-func _intersect_point_with_mask(mask: int) -> Array:
-	var space_state = get_world_2d().direct_space_state
-	var params := PhysicsPointQueryParameters2D.new()
-	params.position = get_global_mouse_position()
-	params.collide_with_areas = true
-	params.collision_mask = mask
-	return space_state.intersect_point(params)
-
 func raycast_check_for_card() -> Card:
-	var result: Array = _intersect_point_with_mask(COLLISION_MASK_CARD)
+	var result: Array = Globals._intersect_point_with_mask(COLLISION_MASK_CARD)
 	if result.size() > 0:
 		return _get_highest_z_card(result)
 	return null
 
 func raycast_check_for_card_slot() -> Node:
-	var result: Array = _intersect_point_with_mask(COLLISION_MASK_CARD_SLOT)
+	var result: Array = Globals._intersect_point_with_mask(COLLISION_MASK_CARD_SLOT)
 	if result.size() > 0:
 		return result[0].collider.get_parent()
 	return null
@@ -59,6 +52,15 @@ func _process(_delta: float) -> void:
 		player_hand_reference.reposition_cards_flat()
 
 func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		var card_slot_found: CardSlot = raycast_check_for_card_slot()
+		if card_slot_found and card_slot_found.card_in_slot and not cursor_in_card_slot:
+			cursor_in_card_slot = true
+			Input.set_custom_mouse_cursor(Globals.cursor_point)
+		elif cursor_in_card_slot and not card_slot_found:
+			cursor_in_card_slot = false
+			Input.set_custom_mouse_cursor(Globals.cursor_open)
+			
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			var card: Card = raycast_check_for_card()
