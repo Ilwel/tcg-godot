@@ -1,6 +1,11 @@
-extends Node
+extends Node2D
 
 var CardScene = preload("res://scenes/Card.tscn")
+
+var cursor_grab = load("res://assets/kenney_cursor-pack/PNG/Outline/Default/hand_closed.png")
+var cursor_open = load("res://assets/kenney_cursor-pack/PNG/Outline/Default/hand_open.png")
+var cursor_point = load("res://assets/kenney_cursor-pack/PNG/Outline/Default/hand_point.png")
+var player_match_controls = false
 
 func snap_camera_up(camera: Camera2D, y_snap):
 	var tween = Globals.create_smooth_tween()
@@ -20,6 +25,19 @@ func snap_camera_down(camera: Camera2D, y_snap):
 		0.15
 	)
 
+func _intersect_point_with_mask(mask: int) -> Array:
+	var space_state = get_world_2d().direct_space_state
+	var params := PhysicsPointQueryParameters2D.new()
+	params.position = get_global_mouse_position()
+	params.collide_with_areas = true
+	params.collision_mask = mask
+	return space_state.intersect_point(params)
+	
+func raycast_check_first_item(mask: int) -> Node:
+	var result: Array = _intersect_point_with_mask(mask)
+	if result.size() > 0:
+		return result[0].collider.get_parent()
+	return null
 
 func handle_2d_perspective(sprite: Sprite2D, mouse_pos: Vector2, angle_x_max: float, angle_y_max: float):
 	#var diff: Vector2 = (position + size) - mouse_pos

@@ -8,6 +8,7 @@ enum PlayerType{
 enum GamePhaseType{
 	Toss,
 	Init,
+	FirstDraw,
 	Game,
 	End
 }

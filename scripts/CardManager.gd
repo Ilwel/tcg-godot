@@ -69,11 +69,13 @@ func _input(event: InputEvent) -> void:
 				finish_drag()
 
 func start_drag(card: Card) -> void:
+	Input.set_custom_mouse_cursor(Globals.cursor_grab)
 	card_being_dragged = card
 	if card_being_dragged and card_being_dragged.face:
 		card_being_dragged.face.position = card_being_dragged.default_face_pos
 
 func finish_drag() -> void:
+	Input.set_custom_mouse_cursor(Globals.cursor_open)
 	if not card_being_dragged:
 		return
 	var card_slot_found: CardSlot = raycast_check_for_card_slot()
@@ -135,10 +137,11 @@ func on_hover_on_window() -> void:
 func highlight_card(card: Card, hovered: bool) -> void:
 	if not card or card_being_dragged:
 		return
-	if hovered:
+	if hovered and Globals.player_match_controls:
 		card.z_index = 1
 		card.show_details(true)
 		if player_hand_reference and player_hand_reference is HandFlat:
+			Input.set_custom_mouse_cursor(Globals.cursor_point)
 			player_hand_reference.reposition_cards_flat(card)
 			is_highlighting_a_card = true
 	else:
@@ -147,3 +150,4 @@ func highlight_card(card: Card, hovered: bool) -> void:
 		if player_hand_reference and player_hand_reference is HandFlat:
 			player_hand_reference.reposition_cards_flat()
 			is_highlighting_a_card = false
+			Input.set_custom_mouse_cursor(Globals.cursor_open)
