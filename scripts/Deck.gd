@@ -8,11 +8,17 @@ class_name Deck extends Node2D
 @onready var deck_size_container: CanvasItem = $DeckSizeContainer
 @onready var deck_collision: CollisionShape2D = $Area2D/CollisionShape2D
 
+const PLAYER_DECK_Y = 247
+const ENEMY_DECK_Y = -247
+
 func _ready() -> void:
 	if player_type == Match.PlayerType.Enemy:
 		deck_collision.disabled = true
 		_import_current_enemy_deck()
+		global_position.y = ENEMY_DECK_Y
+		
 	else:
+		global_position.y = PLAYER_DECK_Y
 		_import_current_player_deck()
 	$Area2D.input_event.connect(_on_area_input)
 	deck_size_container.modulate.a = 0.0
