@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dldvyaaoybfb7"]
+[gd_scene load_steps=3 format=3 uid="uid://dldvyaaoybfb7"]
 
 [ext_resource type="Script" uid="uid://14ppy64oloob" path="res://scripts/Fields.gd" id="1_0aub2"]
 [ext_resource type="PackedScene" uid="uid://dv0krk5mtqqdy" path="res://scenes/SlotsSet.tscn" id="1_17eoa"]
-[ext_resource type="PackedScene" uid="uid://b2y176ud75jmh" path="res://scenes/RuneSet.tscn" id="2_is5d7"]
 
 [node name="Fields" type="CenterContainer"]
 anchors_preset = 15
@@ -21,7 +20,4 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="PlayerSlots" parent="HBoxContainer3/PlayerFields" instance=ExtResource("1_17eoa")]
-layout_mode = 2
-
-[node name="RuneSet" parent="HBoxContainer3/PlayerFields" instance=ExtResource("2_is5d7")]
 layout_mode = 2
